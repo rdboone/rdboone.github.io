@@ -211,20 +211,26 @@ library(rgdal)
 ```
 
 ```
-## rgdal: version: 1.5-16, (SVN revision 1050)
+## Please note that rgdal will be retired by the end of 2023,
+## plan transition to sf/stars/terra functions using GDAL and PROJ
+## at your earliest convenience.
+## 
+## rgdal: version: 1.5-32, (SVN revision 1176)
 ## Geospatial Data Abstraction Library extensions to R successfully loaded
-## Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
-## Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rgdal/gdal
-## GDAL binary built with GEOS: FALSE 
-## Loaded PROJ runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
-## Path to PROJ shared files: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rgdal/proj
-## Linking to sp version:1.4-2
-## Overwritten PROJ_LIB was /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rgdal/proj
+## Loaded GDAL runtime: GDAL 3.4.3, released 2022/04/22
+## Path to GDAL shared files: C:/Users/rohan/AppData/Local/R/win-library/4.2/rgdal/gdal
+## GDAL binary built with GEOS: TRUE 
+## Loaded PROJ runtime: Rel. 7.2.1, January 1st, 2021, [PJ_VERSION: 721]
+## Path to PROJ shared files: C:/Users/rohan/AppData/Local/R/win-library/4.2/rgdal/proj
+## PROJ CDN enabled: FALSE
+## Linking to sp version:1.5-0
+## To mute warnings of possible GDAL/OSR exportToProj4() degradation,
+## use options("rgdal_show_exportToProj4_warnings"="none") before loading sp or rgdal.
 ```
 
 ```r
 # Define the file name to be opened
-f <- ('./data/AOP/NEON_hyperspectral_tutorial_example_subset.h5')
+f <- ('./data/NEON_hyperspectral_tutorial_example_subset.h5')
 ```
 
 <div id="ds-dataTip" markdown="1">
@@ -479,7 +485,7 @@ class(b9)
 ```
 
 ```
-## [1] "matrix"
+## [1] "matrix" "array"
 ```
 
 
@@ -796,7 +802,7 @@ b9r
 ## dimensions : 500, 500, 250000  (nrow, ncol, ncell)
 ## resolution : 0.002, 0.002  (x, y)
 ## extent     : 0, 1, 0, 1  (xmin, xmax, ymin, ymax)
-## crs        : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+## crs        : +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs 
 ## source     : memory
 ## names      : layer 
 ## values     : 0, 9210  (min, max)
@@ -855,7 +861,7 @@ b9r
 ## dimensions : 500, 500, 250000  (nrow, ncol, ncell)
 ## resolution : 1, 1  (x, y)
 ## extent     : 257500, 258000, 4112500, 4113000  (xmin, xmax, ymin, ymax)
-## crs        : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+## crs        : +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs 
 ## source     : memory
 ## names      : layer 
 ## values     : 0, 9210  (min, max)
@@ -1043,6 +1049,20 @@ downloaded from the NEON Data Portal.
 
 ```r
 library(lidR)
+```
+
+```
+## 
+## Attaching package: 'lidR'
+```
+
+```
+## The following objects are masked from 'package:raster':
+## 
+##     projection, projection<-
+```
+
+```r
 library(gstat)
 library(data.table)
 ```
@@ -1075,9 +1095,9 @@ Note that this function can read in both `.las` and `.laz` file formats.
 #(-drop_z_blow and -drop_z_above). See how we have done this here 
 #for you.
 
-HARV <- lidR::readLAS('/Users/kdw223/Research/katharynduffy.github.io/data/NEON_D01_HARV_DP1_727000_4702000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 150 -drop_z_above 325")
+HARV <- lidR::readLAS('/Users/rohan/katharynduffy.github.io/data/NEON_D01_HARV_DP1_727000_4702000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 150 -drop_z_above 325")
 
-TEAK <- lidR::readLAS('/Users/kdw223/Research/katharynduffy.github.io/data/NEON_D17_TEAK_DP1_316000_4091000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 1694 -drop_z_above 2500")
+TEAK <- lidR::readLAS('/Users/rohan/katharynduffy.github.io/data/NEON_D17_TEAK_DP1_316000_4091000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 1694 -drop_z_above 2500")
 ```
 
 Let's check out: 
@@ -1195,7 +1215,7 @@ Variable length records:
 To begin, we will take a look at the structural diversity of the dense mixed deciduous/evergreen 
 forest of HARV. We're going to choose a 40 x 40 m spatial extent for our analysis, but first we 
 need to normalize the height values of this LiDAR point cloud from an absolute elevation 
-above mean sea level to height above the ground using the `lidR::lasnormalize()` function. 
+above mean sea level to height above the ground using the `lidR::normalize_height()` function. 
 
 This function relies on spatial interpolation, and therefore we want to perform this step on an area 
 that is quite a bit larger than our area of interest to avoid edge effects. 
@@ -1216,7 +1236,7 @@ y <- 4702500 #northing
 #Cut out a 200 x 200 m buffer by adding 100 m to easting and 
 #northing coordinates (x,y).
 data.200m <- 
-   lasclipRectangle(HARV,
+   clip_rectangle(HARV,
                     xleft = (x - 100), ybottom = (y - 100),
                     xright = (x + 100), ytop = (y + 100))
 
@@ -1225,7 +1245,7 @@ data.200m <-
 #If the function will not run, then you may need to checkfor outliers
 #by adjusting the 'drop_z_' arguments when reading in the .laz files.
 dtm <- grid_terrain(data.200m, 1, kriging(k = 10L))
-data.200m <- lasnormalize(data.200m, dtm)
+data.200m <- normalize_height(data.200m, dtm)
 
 #Will often give a warning if not all points could be corrected, 
 #but visually check to see if it corrected for ground height. 
@@ -1236,7 +1256,7 @@ lidR::plot(data.200m)
 #Clip 20 m out from each side of the easting and northing 
 #coordinates (x,y).
 data.40m <- 
-   lasclipRectangle(data.200m, 
+   clip_rectangle(data.200m, 
                     xleft = (x - 20), ybottom = (y - 20),
                     xright = (x + 20), ytop = (y + 20))
 
@@ -1433,14 +1453,14 @@ diversity with HARV.
 x <- 316400 
 y <- 4091700
 
-data.200m <- lasclipRectangle(TEAK, 
+data.200m <- clip_rectangle(TEAK, 
                               xleft = (x - 100), ybottom = (y - 100),
                               xright = (x + 100), ytop = (y + 100))
 
 dtm <- grid_terrain(data.200m, 1, kriging(k = 10L))
-data.200m <- lasnormalize(data.200m, dtm)
+data.200m <- normalize_height(data.200m, dtm)
 
-data.40m <- lasclipRectangle(data.200m, 
+data.40m <- clip_rectangle(data.200m, 
                              xleft = (x - 20), ybottom = (y - 20),
                              xright = (x + 20), ytop = (y + 20))
 data.40m@data$Z[data.40m@data$Z <= .5] <- 0  
@@ -1575,14 +1595,15 @@ First, we will load the required libraries and set our working directory:
 
 
 ```r
-library(rGEDI)
+# devtools::install_git("https://github.com/carlos-alberto-silva/rGEDI", dependencies = TRUE)
+# library(rGEDI)
 library(raster)
 library(sp)
 library(sf)
 ```
 
 ```
-## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0
+## Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE
 ```
 
 ```r
@@ -1602,6 +1623,9 @@ library(maptools)
 
 ```
 ## Checking rgeos availability: TRUE
+## Please note that 'maptools' will be retired by the end of 2023,
+## plan transition at your earliest convenience;
+## some functionality will be moved to 'sp'.
 ```
 
 ```r
@@ -1623,20 +1647,20 @@ byTileAOP(dpID = "DP3.30015.001", site = SITECODE, year = 2017,
 ```
 
 ```
-## Downloading files totaling approximately 4.0 MB 
+## Downloading files totaling approximately 4.035953 MB 
 ## Downloading 6 files
 ##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%
 ## Successfully downloaded  6  files.
-## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.prj downloaded to ./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
-## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.shx downloaded to ./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
-## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.dbf downloaded to ./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
-## NEON_D16_WREF_DP3_580000_5075000_CHM.tif downloaded to ./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif
-## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.shp downloaded to ./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
-## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.kml downloaded to ./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/kmls
+## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.shp downloaded to ./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
+## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.kml downloaded to ./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/kmls
+## NEON_D16_WREF_DP3_580000_5075000_CHM.tif downloaded to ./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif
+## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.prj downloaded to ./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
+## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.dbf downloaded to ./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
+## NEON_D16_WREF_DP1_580000_5075000_classified_point_cloud.shx downloaded to ./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps
 ```
 
 ```r
-chm <- raster('./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif/NEON_D16_WREF_DP3_580000_5075000_CHM.tif')
+chm <- raster('./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif/NEON_D16_WREF_DP3_580000_5075000_CHM.tif')
 
 plot(chm)
 ```
@@ -1688,13 +1712,6 @@ gLevel1B <- gedifinder(product="GEDI01_B",
  gLevel1B
 ```
 
-```
-## [1] "https://e4ftl01.cr.usgs.gov/GEDI/GEDI01_B.001/2020.07.17/GEDI01_B_2020199091135_O09038_T04443_02_003_01.h5"
-## [2] "https://e4ftl01.cr.usgs.gov/GEDI/GEDI01_B.001/2019.10.07/GEDI01_B_2019280204828_O04642_T03216_02_003_01.h5"
-## [3] "https://e4ftl01.cr.usgs.gov/GEDI/GEDI01_B.001/2019.07.25/GEDI01_B_2019206022612_O03482_T00370_02_003_01.h5"
-## [4] "https://e4ftl01.cr.usgs.gov/GEDI/GEDI01_B.001/2019.06.08/GEDI01_B_2019159013955_O02752_T01597_02_003_01.h5"
-```
-
 Great! There are several GEDI orbits available that have at least 1 'shot' within our bounding box of interest. For more information about GEDI filename conventions, and other valuable information about GEDI data, <a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/gedi-overview/#gedi-temporal-and-spatial-resolution">see this page on the LP DAAC</a>. However, as mentioned before, each of these files are quite large (~7Gb), so let's focus on just the first one for now.
 
 
@@ -1717,31 +1734,7 @@ From this point on, we will be using the (much smaller) example subset of GEDI d
 gedilevel1b<-readLevel1B(level1Bpath = file.path('./data/NEON_WREF_GEDI_subset.h5'))
 #gedilevel1b<-readLevel1B(level1Bpath = file.path(wd, "GEDI01_B_2019206022612_O03482_T00370_02_003_01.h5"))
 level1bGeo<-getLevel1BGeo(level1b=gedilevel1b,select=c("elevation_bin0"))
-```
-
-```
-##   |                                                                              |                                                                      |   0%  |                                                                              |============                                                          |  17%  |                                                                              |=======================                                               |  33%  |                                                                              |===================================                                   |  50%  |                                                                              |===============================================                       |  67%  |                                                                              |==========================================================            |  83%  |                                                                              |======================================================================| 100%
-```
-
-```r
 head(level1bGeo)
-```
-
-```
-##    shot_number latitude_bin0 latitude_lastbin longitude_bin0 longitude_lastbin
-## 1:           1      45.82541         45.82542      -121.9700         -121.9699
-## 2:           2      45.82566         45.82567      -121.9693         -121.9693
-## 3:           3      45.82590         45.82591      -121.9687         -121.9686
-## 4:           4      45.82615         45.82616      -121.9680         -121.9680
-## 5:           5      45.82639         45.82641      -121.9674         -121.9674
-## 6:           6      45.82664         45.82665      -121.9667         -121.9667
-##    elevation_bin0
-## 1:       505.6233
-## 2:       483.9717
-## 3:       505.3455
-## 4:       496.2213
-## 5:       500.5322
-## 6:       494.9825
 ```
 
 ### Plot GEDI footprints on CHM
@@ -1761,15 +1754,6 @@ level1bGeo_spdf<-st_as_sf(level1bGeo,
 
 # crop to the CHM that is in WGS84
 level1bgeo_WREF=st_crop(level1bGeo_spdf, chm_WGS)
-```
-
-```
-## although coordinates are longitude/latitude, st_intersection assumes that they are planar
-```
-
-```
-## Warning: attribute variables are assumed to be spatially constant throughout all
-## geometries
 ```
 
 Next, project the GEDI geospatial data into the UTM zone that the CHM is within (Zone 10 North). These data come as the point location at the center of the GEDI footprint, so we next convert the GEDI footprint center (lat/long) into a circle using the `buffer()` function. Finally, we can plot the CHM and overlay the GEDI footprint circles, and label with the last three digits of the 'shot' number.
@@ -1792,8 +1776,6 @@ plot(level1bgeo_WREF_UTM_buffer, add=T, col="transparent")
 pointLabel(st_coordinates(level1bgeo_WREF_UTM),
            labels=level1bgeo_WREF_UTM$shot_number, cex=1)
 ```
-
-<img src="07-NEON_AOP_files/figure-html/overly-GEDI-on-chm-1.png" width="672" />
 
 ### Extract Waveform for a single Shot
 Let's take a look at a waveform for a single GEDI shot. We can select a shot by using its `shot_number` as shown below. Note, however, that the example data subset shots have been re-numbered, and those numbers will not correspond with full orbit GEDI data.
@@ -1821,11 +1803,7 @@ grid() #add a grid to the plot
 plot(wf, relative=TRUE, polygon=FALSE, type="l", lwd=2, col="forestgreen",
      xlab="Waveform Amplitude (%)", ylab="Elevation (m)")
 grid()#add a grid to the plot
-```
 
-<img src="07-NEON_AOP_files/figure-html/extract-wf-1.png" width="672" />
-
-```r
 # Revert plotting parameters to previous values.
 par(oldpar)
 ```
@@ -1976,8 +1954,6 @@ plot(GEOID12A_diff_rast, col=viridis(100),main="GEOID12A minus NAD83 (m)")
 plot(WGS84_diff_rast, main="WGS84 minus NAD83 (m)")
 ```
 
-<img src="07-NEON_AOP_files/figure-html/plot-both-diff-maps-1.png" width="576" />
-
 As you can see, the differences between the GEOID12A geoid, and the NAD83 sphereoid vary quite a lot across space, especially in mountainous areas. The magnitude of these differences is also large, upwards of 35m in some areas. Meanwhile, the differences between the NAD83 and WGS84 sphereoids shows a smooth gradient that is relatively small, with total difference less than 2m across the Conterminous USA. 
 
 ### Extract vertical offset for GEDI shots
@@ -2044,7 +2020,7 @@ for(shot_n in c(20)){
 }
 ```
 
-<img src="./images/GEDI_AOP3.png" width="800" />
+
 
 ### Optional - NEON base plots
 You may also be interested to see if any of the GEDI footprints intersect a NEON base plot, which would allow for a direct comparison of the GEDI waveform with many of the datasets which are collected within the base plots, such as the vegetation structure data product containing height, DBH, and species identification of all trees >10cm DBH. While it is statistically pretty unlikely that a GEDI footprint will intersect with your base plot of interest, it is possible that _some_ GEDI footprint will intersetc with _some_ base plot in your study area, so we may as well take a look:
@@ -2055,18 +2031,20 @@ setwd("./data/") # This will depend upon your local environment
 
 # Download the NEON TOS plots polygons directly from the NEON website
 download.file(url="https://data.neonscience.org/api/v0/documents/All_NEON_TOS_Plots_V8", 
-              destfile="All_NEON_TOS_Plots_V8.zip")
+              destfile="All_NEON_TOS_Plots_V8.zip", mode = 'wb')
 unzip("All_NEON_TOS_Plots_V8.zip")
 NEON_all_plots <- st_read('All_NEON_TOS_Plots_V8/All_NEON_TOS_Plot_Polygons_V8.shp')
 ```
 
 ```
-## Reading layer `All_NEON_TOS_Plot_Polygons_V8' from data source `/Users/kdw223/Research/katharynduffy.github.io/data/All_NEON_TOS_Plots_V8/All_NEON_TOS_Plot_Polygons_V8.shp' using driver `ESRI Shapefile'
+## Reading layer `All_NEON_TOS_Plot_Polygons_V8' from data source 
+##   `C:\Users\rohan\katharynduffy.github.io\data\All_NEON_TOS_Plots_V8\All_NEON_TOS_Plot_Polygons_V8.shp' 
+##   using driver `ESRI Shapefile'
 ## Simple feature collection with 3841 features and 36 fields
-## geometry type:  POLYGON
-## dimension:      XY
-## bbox:           xmin: -156.6516 ymin: 17.9514 xmax: -66.82358 ymax: 71.3169
-## CRS:            4326
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -156.6516 ymin: 17.9514 xmax: -66.82358 ymax: 71.3169
+## Geodetic CRS:  WGS 84
 ```
 
 ```r
@@ -2078,10 +2056,6 @@ base_plots_SPDF <- NEON_all_plots[
 rm(NEON_all_plots)
 
 base_crop=st_crop(base_plots_SPDF, extent(chm_WGS))
-```
-
-```
-## although coordinates are longitude/latitude, st_intersection assumes that they are planar
 ```
 
 ```

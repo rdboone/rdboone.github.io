@@ -238,6 +238,7 @@ library(readr)              # Read rectangular data like CSV
 ***
 ### Set Up the Output Directory
 Set your input directory, and create an output directory for the results.
+
 ```{r}
 outDir <- file.path('./data/')                 # Create an output directory if it doesn't exist
 suppressWarnings(dir.create(outDir))                 
@@ -249,7 +250,7 @@ suppressWarnings(dir.create(outDir))
 To submit a request, you must first login to the AppEEARS API. Use your private `R Script` to enter your NASA Earthdata login Username and Password. 
 
 ```{r}
-source('./Tokens/EARTHDATA_Token.R') #path will change based on where you stored it
+source('EARTHDATA_Token.R') #path will change based on where you stored it
 exists('user')
 ```
 
@@ -262,7 +263,7 @@ secret <- jsonlite::base64_enc(paste(user, password, sep = ":"))  # Encode the s
 Next, assign the AppEEARS API URL to a static variable. 
 
 ```{r}
-API_URL = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/'  # Set the AppEEARS API to a variable
+API_URL = "https://appeears.earthdatacloud.nasa.gov/api/"  # Set the AppEEARS API to a variable
 ```
 Use the `httr` package to post your username and password. A successful login will provide you with a token to be used later in this tutorial to submit a request. For more information or if you are experiencing difficulties, please see the [API Documentation](https://lpdaacsvc.cr.usgs.gov/appeears/api/?language=R#login).
 ```{r}
@@ -816,7 +817,7 @@ API_URL = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/'  # Set the AppEEARS API 
 ## Load your Earth Data Token
 To submit a request, you must first login to the AppEEARS API. Use your `token` script to import your credentials.
 ```{r}
-source('./Tokens/EARTHDATA_Token.R') #path will change based on where you stored it
+source('EARTHDATA_Token.R') #path will change based on where you stored it
 
 ```
 Decode the username and password to be used to post login request.
@@ -825,7 +826,7 @@ secret <- jsonlite::base64_enc(paste(user, password, sep = ":"))  # Encode the s
 ```
 Next, assign the AppEEARS API URL to a static variable. 
 ```{r}
-API_URL = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/'     # Set the AppEEARS API to a variable
+API_URL = 'https://appeears.earthdatacloud.nasa.gov/api/'     # Set the AppEEARS API to a variable
 ```
 Use the `httr` package to post your username and password. A successful login will provide you with a token to be used later in this tutorial to submit a request. For more information or if you are experiencing difficulties, please see the [API Documentation](https://lpdaacsvc.cr.usgs.gov/appeears/api/?language=R#login).
 ```{r}
@@ -1174,7 +1175,7 @@ Here, load one of the output GeoTIFFs and show some basic visualizations using t
 
 ## Load a GeoTIFF
 First, created a raster object by calling the raster() function from the `raster` package.
-```{r}
+```{r, eval=FALSE}
 # Create a raster object using the directory previously extracted
 dem <- raster(SRTMGL1_NC_dir)
 ```
@@ -1182,7 +1183,7 @@ dem <- raster(SRTMGL1_NC_dir)
 ## Plot a GeoTIFF
 Make a plot of DEM data and add some additional parameters to the plot. 
 
-```{r, warning= FALSE, fig.width = 8, fig.height=5}
+```{r, warning= FALSE, fig.width = 8, fig.height=5, eval=FALSE}
 gplot(dem) +
   geom_raster(aes(fill = value)) +
   scale_fill_distiller(name = "Elevation (m)", palette = "BrBG", na.value=NA) +

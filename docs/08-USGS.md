@@ -63,11 +63,6 @@ This course assumes a moderate to advanced knowledge of the statistical programm
 
 ### Course outline
 
-
-```
-## Warning: package 'htmlTable' was built under R version 3.6.2
-```
-
 <table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
 <thead>
 <tr><td colspan='3' style='text-align: left;'>
@@ -208,7 +203,7 @@ nrow(data_sc)
 ```
 
 ```
-## [1] 186041
+## [1] 203528
 ```
 
 Let's look at the dataframe returned from `whatNWISdata`:
@@ -227,12 +222,12 @@ head(data_sc)
 ## 5      USGS 02110400 BUCK CREEK NEAR LONGS, SC         ST    33.9535
 ## 6      USGS 02110400 BUCK CREEK NEAR LONGS, SC         ST    33.9535
 ##   dec_long_va coord_acy_cd dec_coord_datum_cd alt_va alt_acy_va alt_datum_cd
-## 1   -78.71974            S              NAD83   5.30        .01       NAVD88
-## 2   -78.71974            S              NAD83   5.30        .01       NAVD88
-## 3   -78.71974            S              NAD83   5.30        .01       NAVD88
-## 4   -78.71974            S              NAD83   5.30        .01       NAVD88
-## 5   -78.71974            S              NAD83   5.30        .01       NAVD88
-## 6   -78.71974            S              NAD83   5.30        .01       NAVD88
+## 1   -78.71974            S              NAD83    5.3       0.01       NAVD88
+## 2   -78.71974            S              NAD83    5.3       0.01       NAVD88
+## 3   -78.71974            S              NAD83    5.3       0.01       NAVD88
+## 4   -78.71974            S              NAD83    5.3       0.01       NAVD88
+## 5   -78.71974            S              NAD83    5.3       0.01       NAVD88
+## 6   -78.71974            S              NAD83    5.3       0.01       NAVD88
 ##     huc_cd data_type_cd parm_cd stat_cd  ts_id loc_web_ds medium_grp_cd
 ## 1 03040206           ad    <NA>    <NA>      0       <NA>           wat
 ## 2 03040206           dv   00010   00001 124327       <NA>           wat
@@ -241,11 +236,11 @@ head(data_sc)
 ## 5 03040206           dv   00045   00006 124351       <NA>           wat
 ## 6 03040206           dv   00060   00001 124348       <NA>           wat
 ##   parm_grp_cd  srs_id access_cd begin_date   end_date count_nu
-## 1        <NA>       0         0 2006-01-01 2019-01-01       14
-## 2        <NA> 1645597         0 2005-10-01 2020-10-12     5395
-## 3        <NA> 1645597         0 2005-10-01 2020-10-12     5395
-## 4        <NA> 1645597         0 2005-10-01 2020-10-12     5395
-## 5        <NA> 1644459         0 2006-01-06 2020-10-12     5203
+## 1        <NA>       0         0 2006-01-01 2021-01-01       16
+## 2        <NA> 1645597         0 2005-10-01 2022-09-28     6099
+## 3        <NA> 1645597         0 2005-10-01 2022-09-28     6099
+## 4        <NA> 1645597         0 2005-10-01 2022-09-28     6099
+## 5        <NA> 1644459         0 2006-01-06 2022-09-27     5876
 ## 6        <NA> 1645423         0 2005-11-17 2019-08-17     4394
 ```
 
@@ -258,7 +253,7 @@ length(sites_sc)
 ```
 
 ```
-## [1] 10127
+## [1] 10164
 ```
 
 To be more specific, let's say we only want stream sites. This requires the `siteType` argument and the abbreviation "ST" for stream. See other siteTypes [here](https://help.waterdata.usgs.gov/code/site_tp_query?fmt=html). We also only want to use sites that have temperature data (USGS parameter code is 00010). Use the argument `parameterCd` and enter the code as a character string, otherwise leading zeroes will be dropped. Recall that you can see a table of all parameter codes by executing `parameterCdFile` in your console.
@@ -270,10 +265,10 @@ nrow(data_sc_stream_temp)
 ```
 
 ```
-## [1] 652
+## [1] 683
 ```
 
-We are now down to just 652 rows of data, much less than our original 186,041 rows. Downloading NWIS data will be covered in the next section, [readNWIS](/usgs-packages/dataRetrieval-readNWIS).
+We are now down to just 683 rows of data, much less than our original 203,528 rows. Downloading NWIS data will be covered in the next section, [readNWIS](/usgs-packages/dataRetrieval-readNWIS).
 
 The `whatNWISdata` function can also be very useful for making quick maps with site locations, see the columns `dec_lat_va` and `dec_long_va` (decimal latitude and longitude value). For instance,
 
@@ -308,7 +303,7 @@ nrow(data_sc_stream_temp_avg)
 ```
 
 ```
-## [1] 95
+## [1] 99
 ```
 
 Let's apply an additional filter to these data using the `filter` function from `dplyr`. Imagine that the trend analysis you are conducting requires a minimum of 300 records and the most recent data needs to be no earlier than 1975.
@@ -323,10 +318,10 @@ nrow(data_sc_stream_temp_avg_applicable)
 ```
 
 ```
-## [1] 91
+## [1] 97
 ```
 
-This means you would have 91 sites to work with for your study.
+This means you would have 97 sites to work with for your study.
 
 ## Common WQP function arguments
 
@@ -359,19 +354,20 @@ names(wqpcounts_sc)
 
 ```
 ##  [1] "content-type"              "content-length"           
-##  [3] "server"                    "date"                     
-##  [5] "content-disposition"       "total-site-count"         
-##  [7] "nwis-site-count"           "storet-site-count"        
-##  [9] "total-activity-count"      "nwis-activity-count"      
-## [11] "storet-activity-count"     "total-result-count"       
-## [13] "nwis-result-count"         "storet-result-count"      
-## [15] "x-frame-options"           "x-content-type-options"   
-## [17] "x-xss-protection"          "strict-transport-security"
-## [19] "x-cache"                   "via"                      
-## [21] "x-amz-cf-pop"              "x-amz-cf-id"
+##  [3] "connection"                "server"                   
+##  [5] "date"                      "content-disposition"      
+##  [7] "total-site-count"          "nwis-site-count"          
+##  [9] "storet-site-count"         "total-activity-count"     
+## [11] "nwis-activity-count"       "storet-activity-count"    
+## [13] "total-result-count"        "nwis-result-count"        
+## [15] "storet-result-count"       "x-frame-options"          
+## [17] "x-content-type-options"    "x-xss-protection"         
+## [19] "strict-transport-security" "x-cache"                  
+## [21] "via"                       "x-amz-cf-pop"             
+## [23] "x-amz-cf-id"
 ```
 
-This returns a list with 22 different items, including total number of sites, breakdown of the number of sites by source (BioData, NWIS, STORET), total number of records, and breakdown of records count by source. Let's just look at total number of sites and total number of records.
+This returns a list with 23 different items, including total number of sites, breakdown of the number of sites by source (BioData, NWIS, STORET), total number of records, and breakdown of records count by source. Let's just look at total number of sites and total number of records.
 
 
 ```r
@@ -379,7 +375,7 @@ wqpcounts_sc[['total-site-count']]
 ```
 
 ```
-## [1] 7101
+## [1] 7608
 ```
 
 ```r
@@ -387,10 +383,10 @@ wqpcounts_sc[['total-result-count']]
 ```
 
 ```
-## [1] 3647355
+## [1] 4010616
 ```
 
-This doesn't provide any information about the sites, just the total number. I know that with 3,647,355 results, I will want to add more criteria before trying to download. Let's continue to add query parameters before moving to `whatWQPsites`.
+This doesn't provide any information about the sites, just the total number. I know that with 4,010,616 results, I will want to add more criteria before trying to download. Let's continue to add query parameters before moving to `whatWQPsites`.
 
 
 ```r
@@ -401,7 +397,7 @@ wqpcounts_sc_stream[['total-site-count']]
 ```
 
 ```
-## [1] 2006
+## [1] 2143
 ```
 
 ```r
@@ -409,10 +405,10 @@ wqpcounts_sc_stream[['total-result-count']]
 ```
 
 ```
-## [1] 1861923
+## [1] 1868560
 ```
 
-1,861,923 results are still a lot to download. Let's add more levels of criteria:
+1,868,560 results are still a lot to download. Let's add more levels of criteria:
 
 
 ```r
@@ -425,7 +421,7 @@ wqpcounts_sc_stream_temp[['total-site-count']]
 ```
 
 ```
-## [1] 1467
+## [1] 1575
 ```
 
 ```r
@@ -433,10 +429,10 @@ wqpcounts_sc_stream_temp[['total-result-count']]
 ```
 
 ```
-## [1] 141508
+## [1] 140472
 ```
 
-141,508 is little more manageble. We can also easily compare avilable stream temperature and lake temperature data.
+140,472 is little more manageble. We can also easily compare avilable stream temperature and lake temperature data.
 
 
 ```r
@@ -450,7 +446,7 @@ wqpcounts_sc_stream_temp[['total-site-count']]
 ```
 
 ```
-## [1] 1467
+## [1] 1575
 ```
 
 ```r
@@ -458,7 +454,7 @@ wqpcounts_sc_lake_temp[['total-site-count']]
 ```
 
 ```
-## [1] 636
+## [1] 660
 ```
 
 ```r
@@ -467,7 +463,7 @@ wqpcounts_sc_stream_temp[['total-result-count']]
 ```
 
 ```
-## [1] 141508
+## [1] 140472
 ```
 
 ```r
@@ -475,7 +471,7 @@ wqpcounts_sc_lake_temp[['total-result-count']]
 ```
 
 ```
-## [1] 52700
+## [1] 52494
 ```
 
 From these query results, it looks like South Carolina has much more stream data than it does lake data.
@@ -484,7 +480,7 @@ Now, let's try our South Carolina stream temperature query with `whatWQPsites` a
 
 ### whatWQPsites
 
-`whatWQPsites` gives back site information that matches your search criteria. You can use any of the regular WQP web service arguments here. We are going to use `whatWQPsites` with the final criteria of the last query summary call - state, site type, parameter, and the earliest start date. This should return the same amount of sites as the last `readWQPdata` query did, 1,467.
+`whatWQPsites` gives back site information that matches your search criteria. You can use any of the regular WQP web service arguments here. We are going to use `whatWQPsites` with the final criteria of the last query summary call - state, site type, parameter, and the earliest start date. This should return the same amount of sites as the last `readWQPdata` query did, 1,575.
 
 
 ```r
@@ -498,7 +494,7 @@ nrow(wqpsites_sc_stream_temp)
 ```
 
 ```
-## [1] 1467
+## [1] 1575
 ```
 
 ```r
@@ -535,14 +531,15 @@ names(wqpsites_sc_stream_temp)
 ## [26] "StateCode"                                      
 ## [27] "CountyCode"                                     
 ## [28] "AquiferName"                                    
-## [29] "FormationTypeText"                              
-## [30] "AquiferTypeName"                                
-## [31] "ConstructionDateText"                           
-## [32] "WellDepthMeasure.MeasureValue"                  
-## [33] "WellDepthMeasure.MeasureUnitCode"               
-## [34] "WellHoleDepthMeasure.MeasureValue"              
-## [35] "WellHoleDepthMeasure.MeasureUnitCode"           
-## [36] "ProviderName"
+## [29] "LocalAqfrName"                                  
+## [30] "FormationTypeText"                              
+## [31] "AquiferTypeName"                                
+## [32] "ConstructionDateText"                           
+## [33] "WellDepthMeasure.MeasureValue"                  
+## [34] "WellDepthMeasure.MeasureUnitCode"               
+## [35] "WellHoleDepthMeasure.MeasureValue"              
+## [36] "WellHoleDepthMeasure.MeasureUnitCode"           
+## [37] "ProviderName"
 ```
 
 Similar to what we did with the NWIS functions, we can filter the sites further using the available metadata in `wqpsites_sc_stream_temp`. We are going to imagine that for our study the sites must have an associated drainage area and cannot be below sea level. Using `dplyr::filter`:
@@ -560,10 +557,10 @@ nrow(wqpsites_sc_stream_temp_applicable)
 ```
 
 ```
-## [1] 74
+## [1] 72
 ```
 
-This brings the count down to a much more manageable 74 sites. Now we are ready to download this data.
+This brings the count down to a much more manageable 72 sites. Now we are ready to download this data.
 
 ## readNWIS functions
 
@@ -593,7 +590,7 @@ We have learned how to discover data available in NWIS, but now we will look at 
 <tr>
 <td style='padding-bottom: 0.5em; padding-right: 0.5em; padding-top: 0.5em; text-align: left;'><a href="#readnwisgwl">readNWISgwl</a></td>
 <td style='padding-bottom: 0.5em; padding-right: 0.5em; padding-top: 0.5em; text-align: left;'>Groundwater levels.</td>
-<td style='padding-bottom: 0.5em; padding-right: 0.5em; padding-top: 0.5em; text-align: left;'>siteNumbers, startDate, endDate, convertType, tz</td>
+<td style='padding-bottom: 0.5em; padding-right: 0.5em; padding-top: 0.5em; text-align: left;'>siteNumbers, startDate, endDate, parameterCd, convertType, tz</td>
 </tr>
 <tr style='background-color: #f7f7f7;'>
 <td style='padding-bottom: 0.5em; padding-right: 0.5em; padding-top: 0.5em; background-color: #f7f7f7; text-align: left;'><a href="#readnwismeas">readNWISmeas</a></td>
@@ -691,11 +688,11 @@ head(MauiCo_avgdailyQ)
 
 ```
 ##   agency_cd  site_no   dateTime X_00060_00003 X_00060_00003_cd tz_cd
-## 1      USGS 16400000 2021-02-11          7.93                P   UTC
+## 1      USGS 16400000 2022-09-28          3.44                P   UTC
 ## 2      USGS 16401000 1929-08-31         18.00                A   UTC
 ## 3      USGS 16402000 1957-07-31         51.00                A   UTC
 ## 4      USGS 16403000 1957-06-30          5.50                A   UTC
-## 5      USGS 16403600 1970-09-29          2.40                A   UTC
+## 5      USGS 16403600 1970-09-30          2.40                A   UTC
 ## 6      USGS 16403900 1996-09-30          1.30                A   UTC
 ```
 
@@ -705,7 +702,7 @@ length(unique(MauiCo_avgdailyQ$site_no))
 ```
 
 ```
-## [1] 132
+## [1] 134
 ```
 
 <a name="readnwisdata-huc"></a>
@@ -732,7 +729,7 @@ head(MauiHUC8_mindailyT)
 ## 3      USGS 16520000 2004-04-14          17.5                A   UTC
 ## 4      USGS 16527000 2004-01-13          15.4                A   UTC
 ## 5      USGS 16555000 2004-01-13          16.4                A   UTC
-## 6      USGS 16618000 2021-02-11          18.1                P   UTC
+## 6      USGS 16618000 2022-09-28          20.5                P   UTC
 ```
 
 ```r
@@ -765,34 +762,37 @@ names(SaltLake_totalN)
 ```
 
 ```
-##  [1] "agency_cd"                  "site_no"                   
-##  [3] "sample_dt"                  "sample_tm"                 
-##  [5] "sample_end_dt"              "sample_end_tm"             
-##  [7] "sample_start_time_datum_cd" "tm_datum_rlbty_cd"         
-##  [9] "coll_ent_cd"                "medium_cd"                 
-## [11] "tu_id"                      "body_part_id"              
-## [13] "p00003"                     "p00004"                    
-## [15] "p00009"                     "p00010"                    
-## [17] "p00020"                     "p00025"                    
-## [19] "p00041"                     "p00061"                    
-## [21] "p00063"                     "p00065"                    
-## [23] "p00095"                     "p00098"                    
-## [25] "p00191"                     "p00300"                    
-## [27] "p00301"                     "p00400"                    
-## [29] "p00480"                     "p01300"                    
-## [31] "p01305"                     "p01320"                    
-## [33] "p01325"                     "p01330"                    
-## [35] "p01340"                     "p01345"                    
-## [37] "p01350"                     "p30207"                    
-## [39] "p30209"                     "p50015"                    
-## [41] "p50280"                     "p70305"                    
-## [43] "p71820"                     "p71999"                    
-## [45] "p72012"                     "p72013"                    
-## [47] "p72105"                     "p72219"                    
-## [49] "p72220"                     "p72263"                    
-## [51] "p81904"                     "p99111"                    
-## [53] "p99156"                     "p99159"                    
-## [55] "p99206"                     "startDateTime"
+##  [1] "agency_cd"                           "site_no"                            
+##  [3] "sample_dt"                           "sample_tm"                          
+##  [5] "sample_end_dt"                       "sample_end_tm"                      
+##  [7] "tm_datum_rlbty_cd"                   "coll_ent_cd"                        
+##  [9] "medium_cd"                           "tu_id"                              
+## [11] "body_part_id"                        "p00004"                             
+## [13] "p00010"                              "p00020"                             
+## [15] "p00025"                              "p00041"                             
+## [17] "p00061"                              "p00063"                             
+## [19] "p00065"                              "p00095"                             
+## [21] "p00098"                              "p00191"                             
+## [23] "p00300"                              "p00301"                             
+## [25] "p00400"                              "p00480"                             
+## [27] "p01300"                              "p01305"                             
+## [29] "p01320"                              "p01325"                             
+## [31] "p01330"                              "p01340"                             
+## [33] "p01345"                              "p01350"                             
+## [35] "p30207"                              "p30209"                             
+## [37] "p30211"                              "p50280"                             
+## [39] "p70305"                              "p71820"                             
+## [41] "p71999"                              "p72012"                             
+## [43] "p72013"                              "p72020"                             
+## [45] "p72105"                              "p72263"                             
+## [47] "p81904"                              "p82398"                             
+## [49] "p84164"                              "p84171"                             
+## [51] "p84182"                              "p99111"                             
+## [53] "p99156"                              "p99159"                             
+## [55] "p99171"                              "p99173"                             
+## [57] "p99206"                              "sample_start_time_datum_cd_reported"
+## [59] "sample_end_time_datum_cd_reported"   "startDateTime"                      
+## [61] "tz_cd"
 ```
 
 ```r
@@ -801,7 +801,7 @@ length(unique(SaltLake_totalN$site_no))
 ```
 
 ```
-## [1] 9
+## [1] 10
 ```
 
 ### readNWISdv
@@ -886,25 +886,32 @@ head(or_site_gwl)
 ```
 ##   agency_cd         site_no site_tp_cd     lev_dt lev_tm lev_tz_cd_reported
 ## 1      USGS 452840122302202         GW 1988-03-14   <NA>                UTC
-## 2      USGS 452840122302202         GW 1988-04-05  17:50                UTC
-## 3      USGS 452840122302202         GW 1988-06-16  22:00                UTC
-## 4      USGS 452840122302202         GW 1988-07-19  22:33                UTC
-## 5      USGS 452840122302202         GW 1988-08-30  22:20                UTC
-## 6      USGS 452840122302202         GW 1988-10-03  21:39                UTC
+## 2      USGS 452840122302202         GW 1988-03-14   <NA>                UTC
+## 3      USGS 452840122302202         GW 1988-03-14   <NA>                UTC
+## 4      USGS 452840122302202         GW 1988-04-05  17:50                UTC
+## 5      USGS 452840122302202         GW 1988-04-05  17:50                UTC
+## 6      USGS 452840122302202         GW 1988-04-05  17:50                UTC
 ##   lev_va sl_lev_va sl_datum_cd lev_status_cd lev_agency_cd lev_dt_acy_cd
-## 1   9.78        NA        <NA>             1          <NA>             D
-## 2   8.77        NA        <NA>             1          <NA>             m
-## 3  10.59        NA        <NA>             1          <NA>             m
-## 4  11.62        NA        <NA>             1          <NA>             m
-## 5  12.13        NA        <NA>             1          <NA>             m
-## 6  12.25        NA        <NA>             1          <NA>             m
-##   lev_acy_cd lev_src_cd lev_meth_cd lev_age_cd        lev_dateTime lev_tz_cd
-## 1       <NA>       <NA>           Z          A                <NA>       UTC
-## 2       <NA>       <NA>           S          A 1988-04-05 17:50:00       UTC
-## 3       <NA>       <NA>           S          A 1988-06-16 22:00:00       UTC
-## 4       <NA>       <NA>           S          A 1988-07-19 22:33:00       UTC
-## 5       <NA>       <NA>           S          A 1988-08-30 22:20:00       UTC
-## 6       <NA>       <NA>           S          A 1988-10-03 21:39:00       UTC
+## 1     NA    232.07      NGVD29             1          <NA>             D
+## 2     NA    235.56      NAVD88             1          <NA>             D
+## 3   9.78        NA        <NA>             1          <NA>             D
+## 4     NA    233.08      NGVD29             1          <NA>             m
+## 5     NA    236.57      NAVD88             1          <NA>             m
+## 6   8.77        NA        <NA>             1          <NA>             m
+##   lev_acy_cd lev_src_cd lev_meth_cd lev_age_cd parameter_cd        lev_dateTime
+## 1       <NA>       <NA>           Z          A        62610                <NA>
+## 2       <NA>       <NA>           Z          A        62611                <NA>
+## 3       <NA>       <NA>           Z          A        72019                <NA>
+## 4       <NA>       <NA>           S          A        62610 1988-04-05 17:50:00
+## 5       <NA>       <NA>           S          A        62611 1988-04-05 17:50:00
+## 6       <NA>       <NA>           S          A        72019 1988-04-05 17:50:00
+##   lev_tz_cd
+## 1       UTC
+## 2       UTC
+## 3       UTC
+## 4       UTC
+## 5       UTC
+## 6       UTC
 ```
 
 ### readNWISmeas
@@ -926,13 +933,13 @@ names(fl_site_meas)
 ```
 ##  [1] "agency_cd"                 "site_no"                  
 ##  [3] "measurement_nu"            "measurement_dt"           
-##  [5] "measurement_tm"            "tz_cd_reported"           
-##  [7] "q_meas_used_fg"            "party_nm"                 
-##  [9] "site_visit_coll_agency_cd" "gage_height_va"           
-## [11] "discharge_va"              "measured_rating_diff"     
-## [13] "gage_va_change"            "gage_va_time"             
-## [15] "control_type_cd"           "discharge_cd"             
-## [17] "measurement_dateTime"      "tz_cd"
+##  [5] "measurement_tm"            "q_meas_used_fg"           
+##  [7] "party_nm"                  "site_visit_coll_agency_cd"
+##  [9] "gage_height_va"            "discharge_va"             
+## [11] "measured_rating_diff"      "gage_va_change"           
+## [13] "gage_va_time"              "control_type_cd"          
+## [15] "discharge_cd"              "measurement_dateTime"     
+## [17] "tz_cd"
 ```
 
 ### readNWISpCode
@@ -952,10 +959,10 @@ readNWISpCode("00065")
 ```
 
 ```
-##      parameter_cd parameter_group_nm      parameter_nm casrn      srsname
-## 1521        00065           Physical Gage height, feet  <NA> Height, gage
-##      parameter_units
-## 1521              ft
+##    parameter_cd parameter_group_nm      parameter_nm casrn      srsname
+## 48        00065           Physical Gage height, feet       Height, gage
+##    parameter_units
+## 48              ft
 ```
 
 ```r
@@ -964,15 +971,15 @@ readNWISpCode(c("00095", "00665"))
 ```
 
 ```
-##      parameter_cd parameter_group_nm
-## 1536        00095           Physical
-## 2740        00665           Nutrient
-##                                                                                    parameter_nm
-## 1536 Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius
-## 2740                          Phosphorus, water, unfiltered, milligrams per liter as phosphorus
-##          casrn              srsname parameter_units
-## 1536      <NA> Specific conductance      uS/cm @25C
-## 2740 7723-14-0           Phosphorus       mg/l as P
+##     parameter_cd parameter_group_nm
+## 63         00095           Physical
+## 210        00665           Nutrient
+##                                                                                   parameter_nm
+## 63  Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius
+## 210                          Phosphorus, water, unfiltered, milligrams per liter as phosphorus
+##         casrn              srsname parameter_units
+## 63            Specific conductance      uS/cm @25C
+## 210 7723-14-0           Phosphorus       mg/l as P
 ```
 
 ### readNWISpeak
@@ -1004,7 +1011,7 @@ fl_site_peak$peak_dt
 ## [41] "2003-03-10" "2004-09-13" "2004-10-01" "2005-10-25" "2007-07-21"
 ## [46] "2008-08-26" "2009-05-26" "2010-03-16" "2011-04-07" "2012-08-30"
 ## [51] "2012-10-08" "2014-07-31" "2015-09-20" "2016-02-06" "2017-09-12"
-## [56] "2018-07-06" "2019-08-17"
+## [56] "2018-07-06" "2019-08-17" "2020-07-17" "2020-10-04"
 ```
 
 ```r
@@ -1038,7 +1045,7 @@ ncol(or_site_do)
 ```
 
 ```
-## [1] 34
+## [1] 36
 ```
 
 ```r
@@ -1080,7 +1087,7 @@ ncol(oh_site_cwa)
 ```
 
 ```
-## [1] 34
+## [1] 36
 ```
 
 ```r
@@ -1126,13 +1133,13 @@ head(miss_rating_base)
 ```
 
 ```
-##    INDEP        DEP STOR
-## 1 -10.01   31961.29    *
-## 2  11.75  200384.50    *
-## 3  25.00  400400.00    *
-## 4  34.34  600000.00    *
-## 5  45.18  919697.20    *
-## 6  50.00 1100000.00    *
+##    INDEP      DEP STOR
+## 1 -10.95  30000.0    *
+## 2   9.40 188188.6    *
+## 3  17.89 293140.6    *
+## 4  25.00 400400.0    *
+## 5  30.00 501300.0    *
+## 6  34.34 600000.0    *
 ```
 
 
@@ -1147,12 +1154,12 @@ head(miss_rating_corr)
 
 ```
 ##    INDEP CORR CORRINDEP
-## 1 -10.82    0    -10.82
-## 2 -10.81    0    -10.81
-## 3 -10.80    0    -10.80
-## 4 -10.79    0    -10.79
-## 5 -10.78    0    -10.78
-## 6 -10.77    0    -10.77
+## 1 -10.95    0    -10.95
+## 2 -10.94    0    -10.94
+## 3 -10.93    0    -10.93
+## 4 -10.92    0    -10.92
+## 5 -10.91    0    -10.91
+## 6 -10.90    0    -10.90
 ```
 
 
@@ -1167,12 +1174,12 @@ head(miss_rating_exsa)
 
 ```
 ##    INDEP SHIFT      DEP STOR
-## 1 -10.82  0.81 31961.29 <NA>
-## 2 -10.81  0.81 32002.44 <NA>
-## 3 -10.80  0.81 32043.63 <NA>
-## 4 -10.79  0.81 32084.84 <NA>
-## 5 -10.78  0.81 32126.08 <NA>
-## 6 -10.77  0.81 32167.35 <NA>
+## 1 -10.95     0 30000.00    *
+## 2 -10.94     0 30041.15 <NA>
+## 3 -10.93     0 30082.33 <NA>
+## 4 -10.92     0 30123.54 <NA>
+## 5 -10.91     0 30164.78 <NA>
+## 6 -10.90     0 30206.06 <NA>
 ```
 
 ### readNWISsite
@@ -1198,7 +1205,7 @@ readNWISsite(siteNumbers="01302020")
 ##   coord_datum_cd dec_coord_datum_cd district_cd state_cd county_cd country_cd
 ## 1          NAD83              NAD83          36       36       005         US
 ##   land_net_ds       map_nm map_scale_fc alt_va alt_meth_cd alt_acy_va
-## 1          NA FLUSHING, NY        24000     50           M         10
+## 1          NA FLUSHING, NY        24000  49.86           X       0.08
 ##   alt_datum_cd   huc_cd basin_cd topo_cd                 instruments_cd
 ## 1       NAVD88 02030102     <NA>    <NA> YNNNYNNNNYNNNNNNNNNNNNNNNNNNNN
 ##   construction_dt inventory_dt drain_area_va contrib_drain_area_va tz_cd
@@ -1206,7 +1213,7 @@ readNWISsite(siteNumbers="01302020")
 ##   local_time_fg reliability_cd gw_file_cd nat_aqfr_cd aqfr_cd aqfr_type_cd
 ## 1             N           <NA>       <NA>        <NA>    <NA>         <NA>
 ##   well_depth_va hole_depth_va depth_src_cd project_no
-## 1            NA            NA         <NA>         NA
+## 1            NA            NA         <NA>       <NA>
 ```
 
 ### readNWISstat
@@ -1238,6 +1245,7 @@ head(mississippi_avgQ)
 ## 3      USGS 07374525        00060 61182         NA    2012  362100
 ## 4      USGS 07374525        00060 61182         NA    2014  489000
 ## 5      USGS 07374525        00060 61182         NA    2015  625800
+## 6      USGS 07374525        00060 61182         NA    2020  706300
 ```
 
 ### readNWISuse
@@ -1502,8 +1510,8 @@ names(attributes(miss_rating_base))
 ```
 
 ```
-## [1] "names"     "class"     "row.names" "comment"   "queryTime" "url"      
-## [7] "header"    "RATING"    "siteInfo"
+## [1] "row.names"  "names"      "class"      "queryTime"  "url"       
+## [6] "headerInfo" "comment"    "RATING"     "siteInfo"
 ```
 
 ```r
@@ -1529,7 +1537,7 @@ attr(miss_rating_base, "siteInfo")
 ##   nat_aqfr_cd aqfr_cd aqfr_type_cd well_depth_va hole_depth_va depth_src_cd
 ## 1        <NA>    <NA>         <NA>            NA            NA         <NA>
 ##   project_no
-## 1         NA
+## 1       <NA>
 ```
 
 ```r
@@ -1538,12 +1546,12 @@ attr(miss_rating_base, "RATING")
 ```
 
 ```
-## [1] "ID=18.0"                                                    
-## [2] "TYPE=STGQ"                                                  
-## [3] "NAME=stage-discharge"                                       
-## [4] "AGING=Working"                                              
-## [5] "REMARKS= developed for trend left of rating in the 35'range"
-## [6] "EXPANSION=logarithmic"                                      
+## [1] "ID=19.0"                                                            
+## [2] "TYPE=STGQ"                                                          
+## [3] "NAME=stage-discharge"                                               
+## [4] "AGING=Working"                                                      
+## [5] "REMARKS= developed for persistent trend to right of rating below 25"
+## [6] "EXPANSION=logarithmic"                                              
 ## [7] "OFFSET1=-2.800000E+01"
 ```
 
@@ -1904,7 +1912,7 @@ nrow(WI_lake_phosphorus_2010)
 ```
 
 ```
-## [1] 3264
+## [1] 495
 ```
 
 <a name="readwqpdata-county"></a>
@@ -1923,7 +1931,7 @@ nrow(Napa_lake_nutrients_Aug2010)
 ```
 
 ```
-## [1] 4835
+## [1] 5579
 ```
 
 <a name="readwqpdata-bbox"></a>
@@ -1944,7 +1952,7 @@ nrow(Everglades_temp_2016_present)
 ```
 
 ```
-## [1] 14507
+## [1] 23752
 ```
 
 ### readWQPqw
@@ -1977,12 +1985,12 @@ head(SC_do_data_since2010[, c("ResultMeasureValue", "ActivityStartDate")])
 
 ```
 ##   ResultMeasureValue ActivityStartDate
-## 1                5.0        2011-09-06
+## 1                5.8        2010-09-26
 ## 2                5.9        2010-04-08
-## 3                6.3        2011-06-15
-## 4                6.8        2014-08-13
-## 5                7.2        2011-03-09
-## 6                7.2        2014-05-13
+## 3                5.0        2011-09-06
+## 4                7.2        2011-03-09
+## 5                4.8        2011-09-06
+## 6                6.4        2011-10-18
 ```
 
 ## Attributes and metadata
@@ -1998,7 +2006,7 @@ names(wqp_attributes)
 
 ```
 ## [1] "names"        "class"        "row.names"    "siteInfo"     "variableInfo"
-## [6] "url"          "queryTime"
+## [6] "queryTime"    "url"
 ```
 
 ```r
@@ -2007,13 +2015,13 @@ head(attr(Everglades_temp_2016_present, "variableInfo"))
 ```
 
 ```
-##   characteristicName parameterCd param_units valueType
-## 1 Temperature, water       00010       deg C      <NA>
-## 2 Temperature, water        <NA>       deg C      <NA>
-## 3 Temperature, water        <NA>       deg C      <NA>
-## 4 Temperature, water        <NA>       deg C      <NA>
-## 5 Temperature, water        <NA>       deg C      <NA>
-## 6 Temperature, water        <NA>       deg C      <NA>
+##   characteristicName param_units valueType
+## 1 Temperature, water       deg C      <NA>
+## 2 Temperature, water       deg C      <NA>
+## 3 Temperature, water       deg C      <NA>
+## 4 Temperature, water       deg C      <NA>
+## 5 Temperature, water       deg C      <NA>
+## 6 Temperature, water       deg C      <NA>
 ```
 
 Let's make a quick map to look at the stations that collected the Everglades data:
@@ -2103,10 +2111,6 @@ library(geoknife)
 ```
 
 ```
-## Warning: package 'geoknife' was built under R version 3.6.2
-```
-
-```
 ## 
 ## Attaching package: 'geoknife'
 ```
@@ -2149,10 +2153,10 @@ head(all_webdata)
 
 ```
 ## An object of class "datagroup":
-## [1] 4km Monthly Parameter-elevation Regressions on Independent Slopes Model Monthly Climate Data for the Continental United States. August 2018 Snapshot 
-##   url: https://cida.usgs.gov/thredds/dodsC/prism_v2 
-## [2] 4km Monthly Parameter-elevation Regressions on Independent Slopes Model Monthly Climate Data for the Continental United States. January 2012 Shapshot 
+## [1] 4km Monthly Parameter-elevation Regressions on Independent Slopes Model Monthly Climate Data for the Continental United States. January 2012 Shapshot 
 ##   url: https://cida.usgs.gov/thredds/dodsC/prism 
+## [2] 4km Monthly Parameter-elevation Regressions on Independent Slopes Model Monthly Climate Data for the Continental United States. January 2022 Snapshot 
+##   url: https://cida.usgs.gov/thredds/dodsC/prism_v2 
 ## [3] ACCESS 1980-1999 
 ##   url: https://cida.usgs.gov/thredds/dodsC/notaro_ACCESS_1980_1999 
 ## [4] ACCESS 2040-2059 
@@ -2259,7 +2263,7 @@ query(evap_fabric, "times")
 ```
 
 ```
-## [1] "2000-01-01 UTC" "2018-01-01 UTC"
+## [1] "2000-01-01 UTC" "2021-01-01 UTC"
 ```
 
 ### Datasets not in GDP
@@ -2288,7 +2292,7 @@ query(DelBay_fabric, "times")
 ```
 
 ```
-## [1] "2021-02-04 UTC" "2021-02-14 UTC"
+## [1] "2022-09-21 UTC" "2022-10-01 UTC"
 ```
 
 The first example we've included here uses aggregated data, meaning there is a single URL for all the data of this type on the server. Some data that you encounter might be non-aggregated, meaning there are multiple URLs to access the same data. In these cases, you will need to create more than one geojob and join data at the end.
@@ -2302,7 +2306,7 @@ query(wv_fabric, "variables")
 ```
 
 ```
-## [1] "IR_WV"
+## character(0)
 ```
 
 ```r
@@ -2312,7 +2316,7 @@ query(wv_fabric, "times") # Note the times of this dataset include only a single
 ```
 
 ```
-## [1] "2020-09-04 UTC" "2020-09-04 UTC"
+## POSIXct of length 0
 ```
 The url used here for `webdata()` contains the date and the time, so we would need to construct a loop through multiple timesteps in order to assemble a time series from this data source. 
 
@@ -2332,7 +2336,7 @@ length(default_geoms)
 ```
 
 ```
-## [1] 75
+## [1] 25
 ```
 
 ```r
@@ -2340,12 +2344,9 @@ head(default_geoms)
 ```
 
 ```
-## [1] "upload:Ag_Lands_ICC"                   
-## [2] "upload:Ag_Lands_ICC_ForOnlineProcesses"
-## [3] "upload:Ag_Lands_Reservation"           
-## [4] "upload:Airport_Polygon"                
-## [5] "sample:Alaska"                         
-## [6] "upload:BBShapefile"
+## [1] "sample:Alaska"                  "upload:CIDA_TEST_2"            
+## [3] "sample:CONUS_Climate_Divisions" "derivative:CONUS_States"       
+## [5] "sample:CONUS_states"            "sample:CSC_Boundaries"
 ```
 
 You will notice a pattern with the names of the geoms: a category followed by `:`, and then a specific name. These category-name combinations are the strings you would use to define your geom. Additionally, `webgeom` can accept a URL that points directly to a WFS. The categories you should be familiar with are `sample` and `upload`. `sample` geoms are any that are available through `geoknife` by default. `upload` geoms are custom shapefiles that someone uploaded through GDP. If you would like to upload a specific shapefile to GDP, go to the [advanced spatial section in GDP](https://cida.usgs.gov/gdp/client/#!advanced/spatial). **Be aware that uploaded shapefiles are wiped from the server at regular intervals (could be as often as weekly)**. To use your own shapefile: upload it as a zip shapefile, execute your job and then save the output; re-upload your shapefile the next time you need it on GDP if it has expired.
@@ -2429,7 +2430,7 @@ webgeom('state::Wisconsin')
 
 ```
 ## An object of class "webgeom":
-## url: https://cida.usgs.gov/gdp/geoserver/wfs 
+## url: https://labs.waterdata.usgs.gov/gdp_web/geoserver/wfs 
 ## geom: sample:CONUS_states 
 ## attribute: STATE 
 ## values: Wisconsin 
@@ -2442,7 +2443,7 @@ webgeom('state::Wisconsin,Maine') # multiple states separated by comma
 
 ```
 ## An object of class "webgeom":
-## url: https://cida.usgs.gov/gdp/geoserver/wfs 
+## url: https://labs.waterdata.usgs.gov/gdp_web/geoserver/wfs 
 ## geom: sample:CONUS_states 
 ## attribute: STATE 
 ## values: Wisconsin, Maine 
@@ -2455,7 +2456,7 @@ webgeom('HUC8::09020306,14060009') # multiple HUCs separated by comma
 
 ```
 ## An object of class "webgeom":
-## url: https://cida.usgs.gov/gdp/geoserver/wfs 
+## url: https://labs.waterdata.usgs.gov/gdp_web/geoserver/wfs 
 ## geom: sample:simplified_huc8 
 ## attribute: HUC_8 
 ## values: 09020306, 14060009 
@@ -2468,7 +2469,7 @@ webgeom('ecoregion::Colorado Plateaus,Driftless Area') # multiple ecoregions sep
 
 ```
 ## An object of class "webgeom":
-## url: https://cida.usgs.gov/gdp/geoserver/wfs 
+## url: https://labs.waterdata.usgs.gov/gdp_web/geoserver/wfs 
 ## geom: sample:Ecoregions_Level_III 
 ## attribute: LEVEL3_NAM 
 ## values: Colorado Plateaus, Driftless Area 
@@ -2580,6 +2581,9 @@ evap_geojob <- geoknife(evap_stencil, evap_fabric, evap_knife)
 ```
 
 
+```
+## Process Accepted
+```
 
 ## Checking the geojob status
 
@@ -2595,7 +2599,7 @@ check(evap_geojob)
 ## [1] "Process successful"
 ## 
 ## $URL
-## [1] "https://cida.usgs.gov:443/gdp/process/RetrieveResultServlet?id=090e2f71-9735-453d-9bf0-0a3b266c9f72OUTPUT"
+## [1] "https://labs.waterdata.usgs.gov:443/gdp-process-wps/RetrieveResultServlet?id=670f3c50-b7e4-4770-afa2-2c5f1b8042edOUTPUT"
 ## 
 ## $statusType
 ## [1] "ProcessSucceeded"
@@ -2713,7 +2717,7 @@ knife_willemail
 
 ```
 ## An object of class "webprocess":
-## url: https://cida.usgs.gov/gdp/process/WebProcessingService 
+## url: https://labs.waterdata.usgs.gov/gdp-process-wps/WebProcessingService 
 ## algorithm: Area Grid Statistics (weighted) 
 ## web processing service version: 1.0.0 
 ## process inputs: 
@@ -2750,7 +2754,7 @@ getPrecip <- function(states, startDate, endDate){
         mutate(statecounty=as.character(polyname)) %>% # character to split into state & county
         tidyr::separate(polyname, c('statename', 'county'), ',') %>%
         mutate(fips = sprintf('%05d', fips)) %>% # fips need 5 digits to join w/ geoknife result
-        filter(statename %in% states) 
+        dplyr::filter(statename %in% states) 
     
     stencil <- webgeom(geom = 'sample:Counties',
                        attribute = 'FIPS',
@@ -2805,6 +2809,10 @@ library(tidyr)
 library(geoknife) #order matters because 'query' is masked by a function in dplyr
 library(RColorBrewer)
 library(maps)
+library(conflicted)
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
 
 statesTSColin <- c('florida', 'alabama', 'georgia', 
                    'south carolina', 'north carolina')

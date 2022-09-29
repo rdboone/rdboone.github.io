@@ -19,8 +19,8 @@
 # Creation Time: 16:31:33
 # Update Date: 2021-01-05
 # Update Time: 16:31:33
-# Final Processing Date:: 2021-02-12
-# Final Processing Time:: 10:37:56
+# Final Processing Date:: 2022-09-29
+# Final Processing Time:: 10:35:52
 #
 date,year,doy,image_count,midday_filename,midday_r,midday_g,midday_b,midday_gcc,midday_rcc,r_mean,r_std,g_mean,g_std,b_mean,b_std,gcc_mean,gcc_std,gcc_50,gcc_75,gcc_90,rcc_mean,rcc_std,rcc_50,rcc_75,rcc_90,max_solar_elev,snow_flag,outlierflag_gcc_mean,outlierflag_gcc_50,outlierflag_gcc_75,outlierflag_gcc_90,smooth_gcc_mean,smooth_gcc_50,smooth_gcc_75,smooth_gcc_90,smooth_rcc_mean,smooth_rcc_50,smooth_rcc_75,smooth_rcc_90,smooth_ci_gcc_mean,smooth_ci_gcc_50,smooth_ci_gcc_75,smooth_ci_gcc_90,smooth_ci_rcc_mean,smooth_ci_rcc_50,smooth_ci_rcc_75,smooth_ci_rcc_90,int_flag
 2010-03-18,2010,77,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.34359,0.34409,0.34698,0.34855,0.33431,0.33503,0.34225,0.34909,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
@@ -85,7 +85,7 @@ date,year,doy,image_count,midday_filename,midday_r,midday_g,midday_b,midday_gcc,
 2010-05-16,2010,136,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36006,0.36207,0.36467,0.36714,0.33314,0.33289,0.33674,0.34049,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
 2010-05-17,2010,137,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36131,0.36328,0.36594,0.36844,0.33278,0.33259,0.3364,0.34018,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
 2010-05-18,2010,138,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36266,0.36454,0.36718,0.36972,0.33246,0.33229,0.33604,0.33985,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
-2010-05-19,2010,139,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36423,0.36593,0.36842,0.371,0.33212,0.33199,0.33568,0.33952,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
+2010-05-19,2010,139,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36423,0.36593,0.36842,0.371,0.33212,0.33199,0.33569,0.33952,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
 2010-05-20,2010,140,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36598,0.36743,0.36966,0.37228,0.33179,0.33169,0.33533,0.33918,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
 2010-05-21,2010,141,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36783,0.369,0.3709,0.37357,0.33145,0.33139,0.33497,0.33885,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1
 2010-05-22,2010,142,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0.36975,0.37061,0.37214,0.37485,0.33111,0.33109,0.33462,0.33852,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1

@@ -204,7 +204,7 @@ library(rgdal)
 
 
 # Define the file name to be opened
-f <- ('./data/AOP/NEON_hyperspectral_tutorial_example_subset.h5')
+f <- ('./data/NEON_hyperspectral_tutorial_example_subset.h5')
 ```
 
 <div id="ds-dataTip" markdown="1">
@@ -830,9 +830,9 @@ Note that this function can read in both `.las` and `.laz` file formats.
 #(-drop_z_blow and -drop_z_above). See how we have done this here 
 #for you.
 
-HARV <- lidR::readLAS('/Users/kdw223/Research/katharynduffy.github.io/data/NEON_D01_HARV_DP1_727000_4702000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 150 -drop_z_above 325")
+HARV <- lidR::readLAS('/Users/rohan/katharynduffy.github.io/data/NEON_D01_HARV_DP1_727000_4702000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 150 -drop_z_above 325")
 
-TEAK <- lidR::readLAS('/Users/kdw223/Research/katharynduffy.github.io/data/NEON_D17_TEAK_DP1_316000_4091000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 1694 -drop_z_above 2500")
+TEAK <- lidR::readLAS('/Users/rohan/katharynduffy.github.io/data/NEON_D17_TEAK_DP1_316000_4091000_classified_point_cloud_colorized.laz',filter = "-drop_z_below 1694 -drop_z_above 2500")
 
 
 ```
@@ -950,7 +950,7 @@ Variable length records:
 To begin, we will take a look at the structural diversity of the dense mixed deciduous/evergreen 
 forest of HARV. We're going to choose a 40 x 40 m spatial extent for our analysis, but first we 
 need to normalize the height values of this LiDAR point cloud from an absolute elevation 
-above mean sea level to height above the ground using the `lidR::lasnormalize()` function. 
+above mean sea level to height above the ground using the `lidR::normalize_height()` function. 
 
 This function relies on spatial interpolation, and therefore we want to perform this step on an area 
 that is quite a bit larger than our area of interest to avoid edge effects. 
@@ -971,7 +971,7 @@ y <- 4702500 #northing
 #Cut out a 200 x 200 m buffer by adding 100 m to easting and 
 #northing coordinates (x,y).
 data.200m <- 
-   lasclipRectangle(HARV,
+   clip_rectangle(HARV,
                     xleft = (x - 100), ybottom = (y - 100),
                     xright = (x + 100), ytop = (y + 100))
 
@@ -980,7 +980,7 @@ data.200m <-
 #If the function will not run, then you may need to checkfor outliers
 #by adjusting the 'drop_z_' arguments when reading in the .laz files.
 dtm <- grid_terrain(data.200m, 1, kriging(k = 10L))
-data.200m <- lasnormalize(data.200m, dtm)
+data.200m <- normalize_height(data.200m, dtm)
 
 #Will often give a warning if not all points could be corrected, 
 #but visually check to see if it corrected for ground height. 
@@ -991,7 +991,7 @@ lidR::plot(data.200m)
 #Clip 20 m out from each side of the easting and northing 
 #coordinates (x,y).
 data.40m <- 
-   lasclipRectangle(data.200m, 
+   clip_rectangle(data.200m, 
                     xleft = (x - 20), ybottom = (y - 20),
                     xright = (x + 20), ytop = (y + 20))
 
@@ -1182,14 +1182,14 @@ diversity with HARV.
 x <- 316400 
 y <- 4091700
 
-data.200m <- lasclipRectangle(TEAK, 
+data.200m <- clip_rectangle(TEAK, 
                               xleft = (x - 100), ybottom = (y - 100),
                               xright = (x + 100), ytop = (y + 100))
 
 dtm <- grid_terrain(data.200m, 1, kriging(k = 10L))
-data.200m <- lasnormalize(data.200m, dtm)
+data.200m <- normalize_height(data.200m, dtm)
 
-data.40m <- lasclipRectangle(data.200m, 
+data.40m <- clip_rectangle(data.200m, 
                              xleft = (x - 20), ybottom = (y - 20),
                              xright = (x + 20), ytop = (y + 20))
 data.40m@data$Z[data.40m@data$Z <= .5] <- 0  
@@ -1325,8 +1325,8 @@ However, GEDI data are currently only available to download per complete orbit, 
 First, we will load the required libraries and set our working directory:
 
 ```{r load-libraries, warning=FALSE}
-
-library(rGEDI)
+# devtools::install_git("https://github.com/carlos-alberto-silva/rGEDI", dependencies = TRUE)
+# library(rGEDI)
 library(raster)
 library(sp)
 library(sf)
@@ -1353,7 +1353,7 @@ byTileAOP(dpID = "DP3.30015.001", site = SITECODE, year = 2017,
           easting = 580000, northing = 5075000, check.size = F,
           savepath = './data')
 
-chm <- raster('./data/DP3.30015.001/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif/NEON_D16_WREF_DP3_580000_5075000_CHM.tif')
+chm <- raster('./data/DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif/NEON_D16_WREF_DP3_580000_5075000_CHM.tif')
 
 plot(chm)
 
@@ -1386,7 +1386,7 @@ lr_lon<- extent(chm_WGS)[2]
 
 Next, we use that bounding box information as an input to the `gedifinder()` funciton.
 
-```{r find-GEDI-orbits}
+```{r find-GEDI-orbits, eval=FALSE}
 
 # Specifying the optional date range, if desired
 daterange=c("2019-03-25", #first date of GEDI availability
@@ -1408,7 +1408,7 @@ gLevel1B <- gedifinder(product="GEDI01_B",
 
 Great! There are several GEDI orbits available that have at least 1 'shot' within our bounding box of interest. For more information about GEDI filename conventions, and other valuable information about GEDI data, <a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/gedi-overview/#gedi-temporal-and-spatial-resolution">see this page on the LP DAAC</a>. However, as mentioned before, each of these files are quite large (~7Gb), so let's focus on just the first one for now.
 
-```{r download-GEDI, eval=F, comment=NA}
+```{r download-GEDI, eval=F, comment=NA, eval=FALSE}
 
 # Downloading GEDI data, if you haven't already
 # Note that this will download a large file (>7Gb) which
@@ -1424,7 +1424,7 @@ Next, we use the rGEDI package to read in the GEDI data. First, we need to make 
 
 From this point on, we will be using the (much smaller) example subset of GEDI data linked at the top of this section. All functions and processes should also work with a full GEDI dataset downloaded above, if you choose to pursue this research on your own!
 
-```{r read-GEDI, message=F}
+```{r read-GEDI, message=F, eval=FALSE}
 
 gedilevel1b<-readLevel1B(level1Bpath = file.path('./data/NEON_WREF_GEDI_subset.h5'))
 #gedilevel1b<-readLevel1B(level1Bpath = file.path(wd, "GEDI01_B_2019206022612_O03482_T00370_02_003_01.h5"))
@@ -1436,7 +1436,7 @@ head(level1bGeo)
 ### Plot GEDI footprints on CHM
 Let's visualize where the GEDI footprints are located on the CHM tile. To do so, we will need to first convert the GEDI data into a spatial object. For this example, we will use a 'spatial features' object type from the 'sp' package:
 
-```{r GEDI-spatial-df}
+```{r GEDI-spatial-df, eval=FALSE}
 
 # drop any shots with missing latitude/longitude values
 level1bGeo = level1bGeo[!is.na(level1bGeo$latitude_bin0)&
@@ -1455,7 +1455,7 @@ level1bgeo_WREF=st_crop(level1bGeo_spdf, chm_WGS)
 
 Next, project the GEDI geospatial data into the UTM zone that the CHM is within (Zone 10 North). These data come as the point location at the center of the GEDI footprint, so we next convert the GEDI footprint center (lat/long) into a circle using the `buffer()` function. Finally, we can plot the CHM and overlay the GEDI footprint circles, and label with the last three digits of the 'shot' number.
 
-```{r overly-GEDI-on-chm, warning=F}
+```{r overly-GEDI-on-chm, warning=F, eval=FALSE}
 
 # project to UTM
 level1bgeo_WREF_UTM=st_transform(
@@ -1479,7 +1479,7 @@ pointLabel(st_coordinates(level1bgeo_WREF_UTM),
 ### Extract Waveform for a single Shot
 Let's take a look at a waveform for a single GEDI shot. We can select a shot by using its `shot_number` as shown below. Note, however, that the example data subset shots have been re-numbered, and those numbers will not correspond with full orbit GEDI data.
 
-```{r extract-wf, warning=F, cache=TRUE}
+```{r extract-wf, warning=F, cache=TRUE, eval=FALSE}
 
 # Extracting GEDI full-waveform for a given shot_number
 wf <- getLevel1BWF(gedilevel1b,shot_number = 20)
@@ -1648,7 +1648,7 @@ GEOID12A is a surface model that is described in terms of its relative height co
 You can access this dataset by <a href="https://ndownloader.figshare.com/files/24994697">clicking here to download the GEOID12A-NAD83 datum offset raster</a>.
 
 
-```{r read-in-datum-rasters}
+```{r read-in-datum-rasters, eval=FALSE}
 
 GEOID12A_diff_rast=raster("./data/GEOID12A_NAD83_offset.tif")
 WGS84_diff_rast=raster("./data/WGS84_NAD83_offset.tif")
@@ -1657,7 +1657,7 @@ WGS84_diff_rast=raster("./data/WGS84_NAD83_offset.tif")
 
 Now that we have the two offset rasters, let's plot them together to compare their spatial patterns.
 
-```{r plot-both-diff-maps, fig.height=8, fig.width=6}
+```{r plot-both-diff-maps, fig.height=8, fig.width=6, eval=FALSE}
 
 par(mfrow=c(2,1), mar=c(2.5,2.5, 3.5,1))
 plot(GEOID12A_diff_rast, col=viridis(100),main="GEOID12A minus NAD83 (m)")
@@ -1673,7 +1673,7 @@ Now that we know the relative vertical offsets between WGS84, NAD83, and GEOID12
 ***** DO I need to convert GEDI x/y locations from WGS84 to NAD83?? *****
 
 
-```{r extract-vert-offsets}
+```{r extract-vert-offsets, eval=FALSE}
 
 # Make a new DF to store the GEDI footprint (x,y) locations, and the relative datum/geoid offsets
 footprint_df=as.data.frame(
@@ -1733,7 +1733,7 @@ for(shot_n in c(20)){
 
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 knitr::include_graphics('./images/GEDI_AOP3.png')
 ```
 
@@ -1746,7 +1746,7 @@ setwd("./data/") # This will depend upon your local environment
 
 # Download the NEON TOS plots polygons directly from the NEON website
 download.file(url="https://data.neonscience.org/api/v0/documents/All_NEON_TOS_Plots_V8", 
-              destfile="All_NEON_TOS_Plots_V8.zip")
+              destfile="All_NEON_TOS_Plots_V8.zip", mode = 'wb')
 unzip("All_NEON_TOS_Plots_V8.zip")
 NEON_all_plots <- st_read('All_NEON_TOS_Plots_V8/All_NEON_TOS_Plot_Polygons_V8.shp')
 

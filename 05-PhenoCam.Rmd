@@ -31,6 +31,38 @@ At the end of this activity, you will be able to:
   6. Handle Field-of-View (FOV) shifts in digital repeat photography.
 
   7. Extract timeseries data from a stack of images using color-based metrics.
+  
+### Guest Lectures
+
+#### PhenoCam, marrying phenology and fluxes
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_4uHLXL1yZA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+*This is not the correct video, it is a placeholder*
+
+>(1 hour, 12 minutes)
+
+**Andrew Richardson**, Regents Professor at Northern Arizona University's Center of Ecosystem Science and Society ([Ecoss](https://ecoss.nau.edu/)) and School of Informatics, Computing and Cyber Systems ([SICCS](https://ecoinfo.nau.edu/)), and Principal Investigator of PhenoCam explains the background of PhenoCam, its conception, and its spacial design.
+
+
+#### Digital repeat photography methods
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sJTEKEHZNVs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+>(1 hour, 11 minutes)
+
+**Bijan Seyednasrollah**, Post-doctoral scholar at Northern Arizona University, School of Informatics, Computing, and Cyber Systems, and lead developer of phenocamapi, covers digital repeat photography methods and the phenocamapi R package.
+
+
+### Assignments in this chapter
+
+  1. *Digital Repeat Photography Written Questions* Demonstrate your knowledge of PhenoCam's philosophy and practices, and identify how these intersect with your own research interests (4.4).
+  
+  2. *Digital Repeat Photography Coding Lab* Download and Manipulate digital repeat photography data using the R packages covered in this chapter (4.13).
+  
+  3. *PhenoCam culmination activity* Summarize a project you might explore using PhenoCam (4.14). 
+  
+  
 
 ## The PhenoCam Network Mission & Design
 
@@ -163,7 +195,7 @@ knitr::include_graphics(c("./images/phenocamFALSE1.png","./images/phenocamFALSE2
 
 **Question 2:** Why does PhenoCam take photos every 15-30 minutes, but summarize to 1 or 3-day products?
 
-**Question 3:** Why does canopy color coordiante with photosynthesis in many ecosystems?  Name an example of a situation where it wouldn't and explain why.
+**Question 3:** Why does canopy color coordinate with photosynthesis in many ecosystems?  Name an example of a situation where it wouldn't and explain why.
 
 **Question 4:** Why are there sometimes multiple **Regions of Interest (ROIs)** for a PhenoCam?
 
@@ -181,7 +213,7 @@ coincide with?
 
 **Question 7:**
 Consider either your current or future research, or a question you’d like to
-address durring this course:
+address during this course:
 
 * Which types of PhenoCam data may be more useful to address these questions?
 * What non-PhenoCam data resources could be combined to help address your question?
@@ -232,7 +264,7 @@ For more details about digital repeat photogrpahy you can check out the followin
 
 ## Pulling Data via the *phenocamapi* Package
 
-The <a href="https://cran.r-project.org/web/packages/phenocamapi/index.html" target="_blank"> *phenocamapi* R package</a>
+The <https://github.com/bnasr/phenocamapi> *phenocamapi* R package</a>
 is developed to simplify interacting with the
 <a href="https://phenocam.sr.unh.edu" target="_blank">PhenoCam network</a>
 dataset and perform data wrangling steps on PhenoCam sites' data and metadata.

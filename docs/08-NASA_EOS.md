@@ -237,6 +237,7 @@ library(readr)              # Read rectangular data like CSV
 ### Set Up the Output Directory
 Set your input directory, and create an output directory for the results.
 
+
 ```r
 outDir <- file.path('./data/')                 # Create an output directory if it doesn't exist
 suppressWarnings(dir.create(outDir))                 
@@ -249,7 +250,7 @@ To submit a request, you must first login to the AppEEARS API. Use your private 
 
 
 ```r
-source('./Tokens/EARTHDATA_Token.R') #path will change based on where you stored it
+source('EARTHDATA_Token.R') #path will change based on where you stored it
 exists('user')
 ```
 
@@ -268,7 +269,7 @@ Next, assign the AppEEARS API URL to a static variable.
 
 
 ```r
-API_URL = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/'  # Set the AppEEARS API to a variable
+API_URL = "https://appeears.earthdatacloud.nasa.gov/api/"  # Set the AppEEARS API to a variable
 ```
 Use the `httr` package to post your username and password. A successful login will provide you with a token to be used later in this tutorial to submit a request. For more information or if you are experiencing difficulties, please see the [API Documentation](https://lpdaacsvc.cr.usgs.gov/appeears/api/?language=R#login).
 
@@ -288,8 +289,8 @@ prettify(token_response)                                       # Print the prett
 ```
 ## {
 ##     "token_type": "Bearer",
-##     "token": "qHEa7l-TJQmr9LTGwqgchMg2v9_Xhnuz3ADxZRwYkNOg8CBxwXNZ7H-WgmB9FY2STOltNjK1KRNzWjRKqHNSjA",
-##     "expiration": "2021-02-14T17:41:11Z"
+##     "token": "3XvrYjK2H8Q4vCMa3OaW712gYBtzUIVXMpE-qN4DDk0dCDSRP82pfAQExZ91nQ-cvnG_UQQaI3_K5bcfTh5iTw",
+##     "expiration": "2022-09-30T22:34:33Z"
 ## }
 ## 
 ```
@@ -326,7 +327,7 @@ sprintf("AppEEARS currently supports %i products." ,length(products))
 ```
 
 ```
-## [1] "AppEEARS currently supports 122 products."
+## [1] "AppEEARS currently supports 162 products."
 ```
 
 Next, look at the product's names and descriptions. Below, the 'ProductAndVersion' and 'Description' are printed for all products.
@@ -340,76 +341,123 @@ for (p in products){
 ```
 
 ```
-## [1] "GPW_DataQualityInd.004 is Quality of Input Data for Population Count and Density Grids from SEDAC"
-## [1] "GPW_UN_Adj_PopCount.004 is UN-adjusted Population Count from SEDAC"
-## [1] "GPW_UN_Adj_PopDensity.004 is UN-adjusted Population Density from SEDAC"
+## [1] "GPW_DataQualityInd.411 is Quality of Input Data for Population Count and Density Grids from SEDAC"
+## [1] "GPW_UN_Adj_PopCount.411 is UN-adjusted Population Count from SEDAC"
+## [1] "GPW_UN_Adj_PopDensity.411 is UN-adjusted Population Density from SEDAC"
 ## [1] "MCD12Q1.006 is Land Cover Type from LP DAAC"
 ## [1] "MCD12Q2.006 is Land Cover Dynamics from LP DAAC"
+## [1] "MCD12Q1.061 is Land Cover Type from LP DAAC"
+## [1] "MCD12Q2.061 is Land Cover Dynamics from LP DAAC"
 ## [1] "MCD15A2H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MCD15A2H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MCD15A3H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MCD15A3H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MCD43A1.006 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A1.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A2.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
 ## [1] "MCD43A3.006 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A3.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
 ## [1] "MCD43A4.006 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A4.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
 ## [1] "MCD64A1.006 is Burned Area (fire) from LP DAAC"
+## [1] "MCD64A1.061 is Burned Area (fire) from LP DAAC"
 ## [1] "MOD09A1.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MOD09A1.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MOD09GA.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MOD09GA.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MOD09GQ.006 is Surface Reflectance Bands 1-2 from LP DAAC"
+## [1] "MOD09GQ.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MOD09Q1.006 is Surface Reflectance Bands 1-2 from LP DAAC"
-## [1] "MOD10A1.005 is Snow Cover from NSIDC DAAC"
+## [1] "MOD09Q1.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MOD10A1.006 is Snow Cover (NDSI) from NSIDC DAAC"
-## [1] "MOD10A2.005 is Snow Cover from NSIDC DAAC"
 ## [1] "MOD10A2.006 is Snow Cover from NSIDC DAAC"
 ## [1] "MOD11A1.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MOD11A1.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MOD11A2.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MOD11A2.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MOD13A1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13A1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD13A2.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13A2.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD13A3.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13A3.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD13Q1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13Q1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD14A2.006 is Thermal Anomalies and Fire from LP DAAC"
+## [1] "MOD14A2.061 is Thermal Anomalies and Fire from LP DAAC"
 ## [1] "MOD15A2H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MOD15A2H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MOD16A2.006 is Evapotranspiration (ET & LE) from LP DAAC"
+## [1] "MOD16A2.061 is Evapotranspiration (ET & LE) from LP DAAC"
 ## [1] "MOD16A2GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MOD16A2GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MOD16A3GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MOD16A3GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MOD17A2H.006 is Gross Primary Productivity (GPP) from LP DAAC"
+## [1] "MOD17A2H.061 is Gross Primary Productivity (GPP) from LP DAAC"
 ## [1] "MOD17A2HGF.006 is Gross Primary Productivity (GPP) from LP DAAC"
+## [1] "MOD17A2HGF.061 is Gross Primary Productivity (GPP) from LP DAAC"
 ## [1] "MOD17A3HGF.006 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
+## [1] "MOD17A3HGF.061 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
+## [1] "MOD21A1D.061 is Temperature and Emissivity (LST&E) from LP DAAC"
+## [1] "MOD21A1N.061 is Temperature and Emissivity (LST&E) from LP DAAC"
+## [1] "MOD21A2.061 is Temperature and Emissivity (LST&E) from LP DAAC"
 ## [1] "MOD44B.006 is Vegetation Continuous Fields (VCF) from LP DAAC"
 ## [1] "MOD44W.006 is Land/Water Mask from LP DAAC"
 ## [1] "MODOCGA.006 is Ocean Reflectance Bands 8-16 from LP DAAC"
 ## [1] "MODTBGA.006 is Thermal Bands and Albedo from LP DAAC"
 ## [1] "MYD09A1.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MYD09A1.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MYD09GA.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MYD09GA.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MYD09GQ.006 is Surface Reflectance Bands 1-2 from LP DAAC"
+## [1] "MYD09GQ.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MYD09Q1.006 is Surface Reflectance Bands 1-2 from LP DAAC"
-## [1] "MYD10A1.005 is Snow Cover from NSIDC DAAC"
+## [1] "MYD09Q1.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MYD10A1.006 is Snow Cover (NDSI) from NSIDC DAAC"
-## [1] "MYD10A2.005 is Snow Cover from NSIDC DAAC"
 ## [1] "MYD10A2.006 is Snow Cover from NSIDC DAAC"
 ## [1] "MYD11A1.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD11A1.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD11A2.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD11A2.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD13A1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13A1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD13A2.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13A2.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13A3.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD13A3.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD13Q1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13Q1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD14A2.006 is Thermal Anomalies and Fire from LP DAAC"
+## [1] "MYD14A2.061 is Thermal Anomalies and Fire from LP DAAC"
 ## [1] "MYD15A2H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MYD15A2H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MYD16A2.006 is Evapotranspiration (ET & LE) from LP DAAC"
+## [1] "MYD16A2.061 is Evapotranspiration (ET & LE) from LP DAAC"
 ## [1] "MYD16A2GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MYD16A2GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MYD16A3GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MYD16A3GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MYD17A2H.006 is Gross Primary Productivity (GPP) from LP DAAC"
+## [1] "MYD17A2H.061 is Gross Primary Productivity (GPP) from LP DAAC"
 ## [1] "MYD17A2HGF.006 is Gross Primary Productivity (GPP) Gap-Filled from LP DAAC"
+## [1] "MYD17A2HGF.061 is Gross Primary Productivity (GPP) Gap-Filled from LP DAAC"
 ## [1] "MYD17A3HGF.006 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
+## [1] "MYD17A3HGF.061 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
 ## [1] "MYD21A1D.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD21A1D.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD21A1N.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD21A1N.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD21A2.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD21A2.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYDOCGA.006 is Ocean Reflectance Bands 8-16 from LP DAAC"
 ## [1] "MYDTBGA.006 is Thermal Bands and Albedo from LP DAAC"
 ## [1] "NASADEM_NC.001 is Elevation from LP DAAC"
 ## [1] "NASADEM_NUMNC.001 is Source from LP DAAC"
-## [1] "SPL3SMP_E.004 is Enhanced L3 Radiometer Soil Moisture from NSIDC DAAC"
-## [1] "SPL3SMP.007 is Soil Moisture from NSIDC DAAC"
-## [1] "SPL4CMDL.005 is Carbon Net Ecosystem Exchange from NSIDC DAAC"
-## [1] "SPL4SMGP.005 is Surface and Root Zone Soil Moisture from NSIDC DAAC"
+## [1] "SPL3SMP_E.005 is Enhanced L3 Radiometer Soil Moisture from NSIDC DAAC"
+## [1] "SPL3SMP.008 is Soil Moisture from NSIDC DAAC"
+## [1] "SPL4CMDL.006 is Carbon Net Ecosystem Exchange from NSIDC DAAC"
+## [1] "SPL4SMGP.006 is Surface and Root Zone Soil Moisture from NSIDC DAAC"
 ## [1] "SPL3FTP.003 is Freeze/Thaw State from NSIDC DAAC"
 ## [1] "SRTMGL1_NC.003 is Elevation (DEM) from LP DAAC"
 ## [1] "SRTMGL1_NUMNC.003 is Source (DEM) from LP DAAC"
@@ -439,21 +487,7 @@ for (p in products){
 ## [1] "VNP43MA2.001 is BRDF-Albedo Quality from LP DAAC"
 ## [1] "VNP43MA3.001 is Albedo (BRDF) from LP DAAC"
 ## [1] "VNP43MA4.001 is Nadir BRDF-Adjusted Reflectance from LP DAAC"
-## [1] "CU_LC08.001 is CONUS Landsat 8 Surface Reflectance from USGS"
-## [1] "CU_LE07.001 is CONUS Landsat 7 Surface Reflectance from USGS"
-## [1] "CU_LT05.001 is CONUS Landsat 5 Surface Reflectance from USGS"
-## [1] "CU_LT04.001 is CONUS Landsat 4 Surface Reflectance from USGS"
-## [1] "AK_LC08.001 is Alaska Landsat 8 Surface Reflectance from USGS"
-## [1] "AK_LE07.001 is Alaska Landsat 7 Surface Reflectance from USGS"
-## [1] "AK_LT05.001 is Alaska Landsat 5 Surface Reflectance from USGS"
-## [1] "AK_LT04.001 is Alaska Landsat 4 Surface Reflectance from USGS"
-## [1] "HI_LC08.001 is Hawaii Landsat 8 Surface Reflectance from USGS"
-## [1] "HI_LE07.001 is Hawaii Landsat 7 Surface Reflectance from USGS"
-## [1] "HI_LT05.001 is Hawaii Landsat 5 Surface Reflectance from USGS"
-## [1] "HI_LT04.001 is Hawaii Landsat 4 Surface Reflectance from USGS"
-## [1] "DAYMET.003 is Daily Surface Weather Data for North America from ORNL"
-## [1] "SSEBop_ET.004 is SSEBop Actual Evapotranspiration (ETa) from USGS"
-## [1] "eMODIS_Smoothed_NDVI.001 is eMODIS Smoothed Normalized Difference Vegetation Index (NDVI) from USGS"
+## [1] "DAYMET.004 is Daily Surface Weather Data for North America from ORNL"
 ## [1] "ECO2LSTE.001 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "ECO2CLD.001 is Cloud Mask from LP DAAC"
 ## [1] "ECO3ETPTJPL.001 is Evapotranspiration PT-JPL from LP DAAC"
@@ -462,6 +496,13 @@ for (p in products){
 ## [1] "ECO4WUE.001 is Water Use Efficiency from LP DAAC"
 ## [1] "ECO1BGEO.001 is Geolocation from LP DAAC"
 ## [1] "ECO1BMAPRAD.001 is Resampled Radiance from LP DAAC"
+## [1] "ECO3ETALEXI.001 is Evapotranspiration dis-ALEXI from LP DAAC"
+## [1] "ECO4ESIALEXI.001 is Evaporative Stress Index dis-ALEXI from LP DAAC"
+## [1] "ECO_L1B_GEO.002 is Geolocation from LP DAAC"
+## [1] "ECO_L2_CLOUD.002 is Cloud Mask Instantaneous from LP DAAC"
+## [1] "ECO_L2_LSTE.002 is Swath Land Surface Temperature and Emissivity Instantaneous from LP DAAC"
+## [1] "HLSS30.020 is Land Surface Reflectance from LP DAAC"
+## [1] "HLSL30.020 is Land Surface Reflectance from LP DAAC"
 ```
 
 The product service provides many useful details, including if a product is currently available in AppEEARS, a description, and information on the spatial and temporal resolution. Below, the product details are retrieved using 'ProductAndVersion'. 
@@ -513,15 +554,27 @@ LAI_Products
 ## [1] "MCD15A2H.006"
 ## 
 ## [[2]]
-## [1] "MCD15A3H.006"
+## [1] "MCD15A2H.061"
 ## 
 ## [[3]]
-## [1] "MOD15A2H.006"
+## [1] "MCD15A3H.006"
 ## 
 ## [[4]]
-## [1] "MYD15A2H.006"
+## [1] "MCD15A3H.061"
 ## 
 ## [[5]]
+## [1] "MOD15A2H.006"
+## 
+## [[6]]
+## [1] "MOD15A2H.061"
+## 
+## [[7]]
+## [1] "MYD15A2H.006"
+## 
+## [[8]]
+## [1] "MYD15A2H.061"
+## 
+## [[9]]
 ## [1] "VNP15A2H.001"
 ```
 
@@ -658,7 +711,7 @@ task_response                                                     # Print the pr
 
 ```
 ## {
-##     "task_id": "3a808dfa-ff0b-48f9-ac7b-9f598d73233b",
+##     "task_id": "f6cd3e97-1424-4401-9440-434a19b53c5c",
 ##     "status": "pending"
 ## }
 ## 
@@ -706,26 +759,25 @@ prettify(status_response)                                           # Print the 
 ##             ]
 ##         },
 ##         "status": "pending",
-##         "created": "2020-10-07T21:37:14.871259",
-##         "task_id": "3a808dfa-ff0b-48f9-ac7b-9f598d73233b",
-##         "updated": "2020-10-07T21:37:14.883937",
-##         "user_id": "kdw223@nau.edu",
+##         "created": "2022-09-29T00:01:49.833402",
+##         "task_id": "f6cd3e97-1424-4401-9440-434a19b53c5c",
+##         "updated": "2022-09-29T00:01:49.994789",
+##         "user_id": "rdb273@nau.edu",
 ##         "estimate": {
 ##             "request_size": 204
 ##         },
+##         "has_swath": false,
 ##         "task_name": "NEON SOAP SJER Vegetation",
 ##         "task_type": "point",
 ##         "api_version": "v1",
-##         "svc_version": "2.47",
+##         "svc_version": "3.12",
 ##         "web_version": {
 ## 
 ##         },
-##         "expires_on": "2020-11-06T21:37:14.883937"
+##         "has_nsidc_daac": false,
+##         "expires_on": "2022-11-28T00:01:49.994789"
 ##     },
 ##     {
-##         "error": {
-## 
-##         },
 ##         "params": {
 ##             "dates": [
 ##                 {
@@ -748,28 +800,24 @@ prettify(status_response)                                           # Print the 
 ##                 }
 ##             ]
 ##         },
-##         "status": "done",
-##         "created": "2020-10-07T21:00:20.497312",
-##         "task_id": "de45360e-d6e4-4577-97a1-760b9893c002",
-##         "updated": "2020-10-07T21:02:10.990738",
-##         "user_id": "kdw223@nau.edu",
-##         "attempts": 1,
+##         "status": "pending",
+##         "created": "2022-09-29T00:00:00.370981",
+##         "task_id": "29c96457-4900-4631-8313-c41337ef3fbc",
+##         "updated": "2022-09-29T00:00:00.648818",
+##         "user_id": "rdb273@nau.edu",
 ##         "estimate": {
 ##             "request_size": 204
 ##         },
-##         "retry_at": {
-## 
-##         },
-##         "completed": "2020-10-07T21:02:10.987115",
+##         "has_swath": false,
 ##         "task_name": "NEON SOAP SJER Vegetation",
 ##         "task_type": "point",
 ##         "api_version": "v1",
-##         "svc_version": "2.47",
+##         "svc_version": "3.12",
 ##         "web_version": {
 ## 
 ##         },
-##         "size_category": "0",
-##         "expires_on": "2020-11-06T21:02:10.990738"
+##         "has_nsidc_daac": false,
+##         "expires_on": "2022-11-28T00:00:00.648818"
 ##     }
 ## ]
 ## 
@@ -827,21 +875,23 @@ prettify(statusResponse)                                    # Print the prettifi
 ##         ]
 ##     },
 ##     "status": "pending",
-##     "created": "2020-10-07T21:37:14.871259",
-##     "task_id": "3a808dfa-ff0b-48f9-ac7b-9f598d73233b",
-##     "updated": "2020-10-07T21:37:14.883937",
-##     "user_id": "kdw223@nau.edu",
+##     "created": "2022-09-29T00:01:49.833402",
+##     "task_id": "f6cd3e97-1424-4401-9440-434a19b53c5c",
+##     "updated": "2022-09-29T00:01:49.994789",
+##     "user_id": "rdb273@nau.edu",
 ##     "estimate": {
 ##         "request_size": 204
 ##     },
+##     "has_swath": false,
 ##     "task_name": "NEON SOAP SJER Vegetation",
 ##     "task_type": "point",
 ##     "api_version": "v1",
-##     "svc_version": "2.47",
+##     "svc_version": "3.12",
 ##     "web_version": {
 ## 
 ##     },
-##     "expires_on": "2020-11-06T21:37:14.883937"
+##     "has_nsidc_daac": false,
+##     "expires_on": "2022-11-28T00:01:49.994789"
 ## }
 ## 
 ```
@@ -876,61 +926,7 @@ prettify(bundle_response)                                       # Print the pret
 
 ```
 ## {
-##     "files": [
-##         {
-##             "sha256": "e12e3634d11491fd77aa4c8f347b94304885746713852d21a08c635b2a9e4852",
-##             "file_id": "82ab979e-0dbe-4869-b676-88193c79727f",
-##             "file_name": "NEON-SOAP-SJER-Vegetation-MCD15A3H-006-results.csv",
-##             "file_size": 68260,
-##             "file_type": "csv"
-##         },
-##         {
-##             "sha256": "e465df89151b28d63a1dda2420cedec7f24b383d03e0482083839565a27f8d5d",
-##             "file_id": "ab2e3574-3c50-44dd-bafd-c30b1fb4d99d",
-##             "file_name": "NEON-SOAP-SJER-Vegetation-MOD11A2-006-results.csv",
-##             "file_size": 28570,
-##             "file_type": "csv"
-##         },
-##         {
-##             "sha256": "100dd40b43760430c900eea1d39b78a73bf880ae397020ad29bcf1c58947e8b5",
-##             "file_id": "765639a0-7278-497d-aca6-433ebf41d021",
-##             "file_name": "NEON-SOAP-SJER-Vegetation-granule-list.txt",
-##             "file_size": 11402,
-##             "file_type": "txt"
-##         },
-##         {
-##             "sha256": "6b824abc02ce3e49409e332e5b941533a66b2ff4c2a362b4d3b5b31b4266ecd5",
-##             "file_id": "16eae3d4-8876-403e-b673-2e29f2d8324a",
-##             "file_name": "NEON-SOAP-SJER-Vegetation-request.json",
-##             "file_size": 883,
-##             "file_type": "json"
-##         },
-##         {
-##             "sha256": "3e025646ef6eadb42eb4d9f172db96ed824bbc72333519f0c8f44c3449fe4d7d",
-##             "file_id": "ff3f16d7-75c2-4185-8ce6-f6a3cc4de17c",
-##             "file_name": "NEON-SOAP-SJER-Vegetation-MCD15A3H-006-metadata.xml",
-##             "file_size": 17255,
-##             "file_type": "xml"
-##         },
-##         {
-##             "sha256": "650cd511fcfc442fe675e35d14a244247c565085d5dcbb215782354d7ceda774",
-##             "file_id": "ffa0432e-cc7a-4cde-8264-6ad97dbed7c3",
-##             "file_name": "NEON-SOAP-SJER-Vegetation-MOD11A2-006-metadata.xml",
-##             "file_size": 17217,
-##             "file_type": "xml"
-##         },
-##         {
-##             "sha256": "337cd424036258f85f9d216debfe1f9b0649bf2971ea1ce356a44b9c9ca51078",
-##             "file_id": "aa98b009-c955-468d-bd03-9ca7068969b9",
-##             "file_name": "README.md",
-##             "file_size": 17894,
-##             "file_type": "txt"
-##         }
-##     ],
-##     "created": "2020-10-07T21:38:39.407692",
-##     "task_id": "3a808dfa-ff0b-48f9-ac7b-9f598d73233b",
-##     "updated": "2020-10-07T21:39:07.732995",
-##     "bundle_type": "point"
+##     "message": "Document not found: {'task_id': 'f6cd3e97-1424-4401-9440-434a19b53c5c'}"
 ## }
 ## 
 ```
@@ -973,52 +969,64 @@ prettify(q_response)                                      # Print the prettified
 ```
 ## [
 ##     {
-##         "ProductAndVersion": "CU_LT05.001",
+##         "ProductAndVersion": "HLSS30.020",
+##         "Layer": "B10",
+##         "QualityProductAndVersion": "HLSS30.020",
+##         "QualityLayers": [
+##             "Fmask"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "HLSS30.020",
+##         "Layer": "B11",
+##         "QualityProductAndVersion": "HLSS30.020",
+##         "QualityLayers": [
+##             "Fmask"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "HLSS30.020",
+##         "Layer": "B12",
+##         "QualityProductAndVersion": "HLSS30.020",
+##         "QualityLayers": [
+##             "Fmask"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "ASTGTM_NC.003",
+##         "Layer": "ASTER_GDEM_DEM",
+##         "QualityProductAndVersion": "ASTGTM_NUMNC.003",
+##         "QualityLayers": [
+##             "ASTER_GDEM_NUM"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "CU_LC08.001",
 ##         "Layer": "SRB1",
-##         "QualityProductAndVersion": "CU_LT05.001",
+##         "QualityProductAndVersion": "CU_LC08.001",
 ##         "QualityLayers": [
 ##             "PIXELQA"
-##         ]
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
 ##     },
 ##     {
-##         "ProductAndVersion": "CU_LT05.001",
+##         "ProductAndVersion": "CU_LC08.001",
 ##         "Layer": "SRB2",
-##         "QualityProductAndVersion": "CU_LT05.001",
+##         "QualityProductAndVersion": "CU_LC08.001",
 ##         "QualityLayers": [
 ##             "PIXELQA"
-##         ]
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB3",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ]
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB4",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ]
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB5",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ]
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB7",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ]
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
 ##     }
 ## ]
 ## 
@@ -1047,7 +1055,8 @@ prettify(MCD15A3H_quality)                                     # Print the prett
 ##         "QualityLayers": [
 ##             "FparLai_QC",
 ##             "FparExtra_QC"
-##         ]
+##         ],
+##         "VisibleToWorker": true
 ##     },
 ##     {
 ##         "ProductAndVersion": "MCD15A3H.006",
@@ -1056,7 +1065,8 @@ prettify(MCD15A3H_quality)                                     # Print the prett
 ##         "QualityLayers": [
 ##             "FparLai_QC",
 ##             "FparExtra_QC"
-##         ]
+##         ],
+##         "VisibleToWorker": true
 ##     },
 ##     {
 ##         "ProductAndVersion": "MCD15A3H.006",
@@ -1065,7 +1075,8 @@ prettify(MCD15A3H_quality)                                     # Print the prett
 ##         "QualityLayers": [
 ##             "FparLai_QC",
 ##             "FparExtra_QC"
-##         ]
+##         ],
+##         "VisibleToWorker": true
 ##     },
 ##     {
 ##         "ProductAndVersion": "MCD15A3H.006",
@@ -1074,7 +1085,8 @@ prettify(MCD15A3H_quality)                                     # Print the prett
 ##         "QualityLayers": [
 ##             "FparLai_QC",
 ##             "FparExtra_QC"
-##         ]
+##         ],
+##         "VisibleToWorker": true
 ##     }
 ## ]
 ## 
@@ -1366,7 +1378,7 @@ lst_SOAP_DN[1:5,]                     # print the five first observations
 ```
 
 ```
-## # A tibble: 5 x 5
+## # A tibble: 5 × 5
 ##   Latitude Longitude Date       Tstat                     LST
 ##      <dbl>     <dbl> <date>     <chr>                   <dbl>
 ## 1     37.0     -119. 2019-12-27 MOD11A2_006_LST_Day_1km  278.
@@ -1573,7 +1585,7 @@ API_URL = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/'  # Set the AppEEARS API 
 To submit a request, you must first login to the AppEEARS API. Use your `token` script to import your credentials.
 
 ```r
-source('./Tokens/EARTHDATA_Token.R') #path will change based on where you stored it
+source('EARTHDATA_Token.R') #path will change based on where you stored it
 ```
 Decode the username and password to be used to post login request.
 
@@ -1583,7 +1595,7 @@ secret <- jsonlite::base64_enc(paste(user, password, sep = ":"))  # Encode the s
 Next, assign the AppEEARS API URL to a static variable. 
 
 ```r
-API_URL = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/'     # Set the AppEEARS API to a variable
+API_URL = 'https://appeears.earthdatacloud.nasa.gov/api/'     # Set the AppEEARS API to a variable
 ```
 Use the `httr` package to post your username and password. A successful login will provide you with a token to be used later in this tutorial to submit a request. For more information or if you are experiencing difficulties, please see the [API Documentation](https://lpdaacsvc.cr.usgs.gov/appeears/api/?language=R#login).
 
@@ -1603,8 +1615,8 @@ prettify(token_response)                                       # Print the prett
 ```
 ## {
 ##     "token_type": "Bearer",
-##     "token": "qHEa7l-TJQmr9LTGwqgchMg2v9_Xhnuz3ADxZRwYkNOg8CBxwXNZ7H-WgmB9FY2STOltNjK1KRNzWjRKqHNSjA",
-##     "expiration": "2021-02-14T17:41:11Z"
+##     "token": "3XvrYjK2H8Q4vCMa3OaW712gYBtzUIVXMpE-qN4DDk0dCDSRP82pfAQExZ91nQ-cvnG_UQQaI3_K5bcfTh5iTw",
+##     "expiration": "2022-09-30T22:34:33Z"
 ## }
 ## 
 ```
@@ -1638,7 +1650,7 @@ sprintf("AppEEARS currently supports %i products." ,length(products))
 ```
 
 ```
-## [1] "AppEEARS currently supports 122 products."
+## [1] "AppEEARS currently supports 162 products."
 ```
 
 Next, look at the product's names and descriptions. Below, the 'ProductAndVersion' and 'Description' are printed for all products.
@@ -1651,76 +1663,123 @@ for (p in products){
 ```
 
 ```
-## [1] "GPW_DataQualityInd.004 is Quality of Input Data for Population Count and Density Grids from SEDAC"
-## [1] "GPW_UN_Adj_PopCount.004 is UN-adjusted Population Count from SEDAC"
-## [1] "GPW_UN_Adj_PopDensity.004 is UN-adjusted Population Density from SEDAC"
+## [1] "GPW_DataQualityInd.411 is Quality of Input Data for Population Count and Density Grids from SEDAC"
+## [1] "GPW_UN_Adj_PopCount.411 is UN-adjusted Population Count from SEDAC"
+## [1] "GPW_UN_Adj_PopDensity.411 is UN-adjusted Population Density from SEDAC"
 ## [1] "MCD12Q1.006 is Land Cover Type from LP DAAC"
 ## [1] "MCD12Q2.006 is Land Cover Dynamics from LP DAAC"
+## [1] "MCD12Q1.061 is Land Cover Type from LP DAAC"
+## [1] "MCD12Q2.061 is Land Cover Dynamics from LP DAAC"
 ## [1] "MCD15A2H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MCD15A2H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MCD15A3H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MCD15A3H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MCD43A1.006 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A1.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A2.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
 ## [1] "MCD43A3.006 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A3.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
 ## [1] "MCD43A4.006 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
+## [1] "MCD43A4.061 is Bidirectional Reflectance Distribution Function (BRDF) and Albedo from LP DAAC"
 ## [1] "MCD64A1.006 is Burned Area (fire) from LP DAAC"
+## [1] "MCD64A1.061 is Burned Area (fire) from LP DAAC"
 ## [1] "MOD09A1.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MOD09A1.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MOD09GA.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MOD09GA.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MOD09GQ.006 is Surface Reflectance Bands 1-2 from LP DAAC"
+## [1] "MOD09GQ.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MOD09Q1.006 is Surface Reflectance Bands 1-2 from LP DAAC"
-## [1] "MOD10A1.005 is Snow Cover from NSIDC DAAC"
+## [1] "MOD09Q1.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MOD10A1.006 is Snow Cover (NDSI) from NSIDC DAAC"
-## [1] "MOD10A2.005 is Snow Cover from NSIDC DAAC"
 ## [1] "MOD10A2.006 is Snow Cover from NSIDC DAAC"
 ## [1] "MOD11A1.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MOD11A1.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MOD11A2.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MOD11A2.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MOD13A1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13A1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD13A2.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13A2.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD13A3.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13A3.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD13Q1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MOD13Q1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MOD14A2.006 is Thermal Anomalies and Fire from LP DAAC"
+## [1] "MOD14A2.061 is Thermal Anomalies and Fire from LP DAAC"
 ## [1] "MOD15A2H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MOD15A2H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MOD16A2.006 is Evapotranspiration (ET & LE) from LP DAAC"
+## [1] "MOD16A2.061 is Evapotranspiration (ET & LE) from LP DAAC"
 ## [1] "MOD16A2GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MOD16A2GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MOD16A3GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MOD16A3GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MOD17A2H.006 is Gross Primary Productivity (GPP) from LP DAAC"
+## [1] "MOD17A2H.061 is Gross Primary Productivity (GPP) from LP DAAC"
 ## [1] "MOD17A2HGF.006 is Gross Primary Productivity (GPP) from LP DAAC"
+## [1] "MOD17A2HGF.061 is Gross Primary Productivity (GPP) from LP DAAC"
 ## [1] "MOD17A3HGF.006 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
+## [1] "MOD17A3HGF.061 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
+## [1] "MOD21A1D.061 is Temperature and Emissivity (LST&E) from LP DAAC"
+## [1] "MOD21A1N.061 is Temperature and Emissivity (LST&E) from LP DAAC"
+## [1] "MOD21A2.061 is Temperature and Emissivity (LST&E) from LP DAAC"
 ## [1] "MOD44B.006 is Vegetation Continuous Fields (VCF) from LP DAAC"
 ## [1] "MOD44W.006 is Land/Water Mask from LP DAAC"
 ## [1] "MODOCGA.006 is Ocean Reflectance Bands 8-16 from LP DAAC"
 ## [1] "MODTBGA.006 is Thermal Bands and Albedo from LP DAAC"
 ## [1] "MYD09A1.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MYD09A1.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MYD09GA.006 is Surface Reflectance Bands 1-7 from LP DAAC"
+## [1] "MYD09GA.061 is Surface Reflectance Bands 1-7 from LP DAAC"
 ## [1] "MYD09GQ.006 is Surface Reflectance Bands 1-2 from LP DAAC"
+## [1] "MYD09GQ.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MYD09Q1.006 is Surface Reflectance Bands 1-2 from LP DAAC"
-## [1] "MYD10A1.005 is Snow Cover from NSIDC DAAC"
+## [1] "MYD09Q1.061 is Surface Reflectance Bands 1-2 from LP DAAC"
 ## [1] "MYD10A1.006 is Snow Cover (NDSI) from NSIDC DAAC"
-## [1] "MYD10A2.005 is Snow Cover from NSIDC DAAC"
 ## [1] "MYD10A2.006 is Snow Cover from NSIDC DAAC"
 ## [1] "MYD11A1.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD11A1.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD11A2.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD11A2.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD13A1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13A1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD13A2.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13A2.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13A3.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD13A3.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD13Q1.006 is Vegetation Indices (NDVI & EVI) from LP DAAC"
+## [1] "MYD13Q1.061 is Vegetation Indices (NDVI & EVI) from LP DAAC"
 ## [1] "MYD14A2.006 is Thermal Anomalies and Fire from LP DAAC"
+## [1] "MYD14A2.061 is Thermal Anomalies and Fire from LP DAAC"
 ## [1] "MYD15A2H.006 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
+## [1] "MYD15A2H.061 is Leaf Area Index (LAI) and Fraction of Photosynthetically Active Radiation (FPAR) from LP DAAC"
 ## [1] "MYD16A2.006 is Evapotranspiration (ET & LE) from LP DAAC"
+## [1] "MYD16A2.061 is Evapotranspiration (ET & LE) from LP DAAC"
 ## [1] "MYD16A2GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MYD16A2GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MYD16A3GF.006 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
+## [1] "MYD16A3GF.061 is Net Evapotranspiration Gap-Filled (ET & LE) from LP DAAC"
 ## [1] "MYD17A2H.006 is Gross Primary Productivity (GPP) from LP DAAC"
+## [1] "MYD17A2H.061 is Gross Primary Productivity (GPP) from LP DAAC"
 ## [1] "MYD17A2HGF.006 is Gross Primary Productivity (GPP) Gap-Filled from LP DAAC"
+## [1] "MYD17A2HGF.061 is Gross Primary Productivity (GPP) Gap-Filled from LP DAAC"
 ## [1] "MYD17A3HGF.006 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
+## [1] "MYD17A3HGF.061 is Net Primary Production (NPP) Gap-Filled from LP DAAC"
 ## [1] "MYD21A1D.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD21A1D.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD21A1N.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD21A1N.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYD21A2.006 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
+## [1] "MYD21A2.061 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "MYDOCGA.006 is Ocean Reflectance Bands 8-16 from LP DAAC"
 ## [1] "MYDTBGA.006 is Thermal Bands and Albedo from LP DAAC"
 ## [1] "NASADEM_NC.001 is Elevation from LP DAAC"
 ## [1] "NASADEM_NUMNC.001 is Source from LP DAAC"
-## [1] "SPL3SMP_E.004 is Enhanced L3 Radiometer Soil Moisture from NSIDC DAAC"
-## [1] "SPL3SMP.007 is Soil Moisture from NSIDC DAAC"
-## [1] "SPL4CMDL.005 is Carbon Net Ecosystem Exchange from NSIDC DAAC"
-## [1] "SPL4SMGP.005 is Surface and Root Zone Soil Moisture from NSIDC DAAC"
+## [1] "SPL3SMP_E.005 is Enhanced L3 Radiometer Soil Moisture from NSIDC DAAC"
+## [1] "SPL3SMP.008 is Soil Moisture from NSIDC DAAC"
+## [1] "SPL4CMDL.006 is Carbon Net Ecosystem Exchange from NSIDC DAAC"
+## [1] "SPL4SMGP.006 is Surface and Root Zone Soil Moisture from NSIDC DAAC"
 ## [1] "SPL3FTP.003 is Freeze/Thaw State from NSIDC DAAC"
 ## [1] "SRTMGL1_NC.003 is Elevation (DEM) from LP DAAC"
 ## [1] "SRTMGL1_NUMNC.003 is Source (DEM) from LP DAAC"
@@ -1750,21 +1809,7 @@ for (p in products){
 ## [1] "VNP43MA2.001 is BRDF-Albedo Quality from LP DAAC"
 ## [1] "VNP43MA3.001 is Albedo (BRDF) from LP DAAC"
 ## [1] "VNP43MA4.001 is Nadir BRDF-Adjusted Reflectance from LP DAAC"
-## [1] "CU_LC08.001 is CONUS Landsat 8 Surface Reflectance from USGS"
-## [1] "CU_LE07.001 is CONUS Landsat 7 Surface Reflectance from USGS"
-## [1] "CU_LT05.001 is CONUS Landsat 5 Surface Reflectance from USGS"
-## [1] "CU_LT04.001 is CONUS Landsat 4 Surface Reflectance from USGS"
-## [1] "AK_LC08.001 is Alaska Landsat 8 Surface Reflectance from USGS"
-## [1] "AK_LE07.001 is Alaska Landsat 7 Surface Reflectance from USGS"
-## [1] "AK_LT05.001 is Alaska Landsat 5 Surface Reflectance from USGS"
-## [1] "AK_LT04.001 is Alaska Landsat 4 Surface Reflectance from USGS"
-## [1] "HI_LC08.001 is Hawaii Landsat 8 Surface Reflectance from USGS"
-## [1] "HI_LE07.001 is Hawaii Landsat 7 Surface Reflectance from USGS"
-## [1] "HI_LT05.001 is Hawaii Landsat 5 Surface Reflectance from USGS"
-## [1] "HI_LT04.001 is Hawaii Landsat 4 Surface Reflectance from USGS"
-## [1] "DAYMET.003 is Daily Surface Weather Data for North America from ORNL"
-## [1] "SSEBop_ET.004 is SSEBop Actual Evapotranspiration (ETa) from USGS"
-## [1] "eMODIS_Smoothed_NDVI.001 is eMODIS Smoothed Normalized Difference Vegetation Index (NDVI) from USGS"
+## [1] "DAYMET.004 is Daily Surface Weather Data for North America from ORNL"
 ## [1] "ECO2LSTE.001 is Land Surface Temperature & Emissivity (LST&E) from LP DAAC"
 ## [1] "ECO2CLD.001 is Cloud Mask from LP DAAC"
 ## [1] "ECO3ETPTJPL.001 is Evapotranspiration PT-JPL from LP DAAC"
@@ -1773,6 +1818,13 @@ for (p in products){
 ## [1] "ECO4WUE.001 is Water Use Efficiency from LP DAAC"
 ## [1] "ECO1BGEO.001 is Geolocation from LP DAAC"
 ## [1] "ECO1BMAPRAD.001 is Resampled Radiance from LP DAAC"
+## [1] "ECO3ETALEXI.001 is Evapotranspiration dis-ALEXI from LP DAAC"
+## [1] "ECO4ESIALEXI.001 is Evaporative Stress Index dis-ALEXI from LP DAAC"
+## [1] "ECO_L1B_GEO.002 is Geolocation from LP DAAC"
+## [1] "ECO_L2_CLOUD.002 is Cloud Mask Instantaneous from LP DAAC"
+## [1] "ECO_L2_LSTE.002 is Swath Land Surface Temperature and Emissivity Instantaneous from LP DAAC"
+## [1] "HLSS30.020 is Land Surface Reflectance from LP DAAC"
+## [1] "HLSL30.020 is Land Surface Reflectance from LP DAAC"
 ```
 The product service provides many useful details, including if a product is currently available in AppEEARS, a description, and information on the spatial and temporal resolution. Below, the product details are retrieved using 'ProductAndVersion'. 
 
@@ -1821,15 +1873,27 @@ LAI_Products
 ## [1] "MCD15A2H.006"
 ## 
 ## [[2]]
-## [1] "MCD15A3H.006"
+## [1] "MCD15A2H.061"
 ## 
 ## [[3]]
-## [1] "MOD15A2H.006"
+## [1] "MCD15A3H.006"
 ## 
 ## [[4]]
-## [1] "MYD15A2H.006"
+## [1] "MCD15A3H.061"
 ## 
 ## [[5]]
+## [1] "MOD15A2H.006"
+## 
+## [[6]]
+## [1] "MOD15A2H.061"
+## 
+## [[7]]
+## [1] "MYD15A2H.006"
+## 
+## [[8]]
+## [1] "MYD15A2H.061"
+## 
+## [[9]]
 ## [1] "VNP15A2H.001"
 ```
 
@@ -1918,7 +1982,7 @@ onaq <- readOGR(dsn= "./ONAQ_extent", layer = "D15_ONAQ_C1_P1_v2")
 
 ```
 ## OGR data source with driver: ESRI Shapefile 
-## Source: "/Users/kdw223/Research/katharynduffy.github.io/ONAQ_extent", layer: "D15_ONAQ_C1_P1_v2"
+## Source: "C:\Users\rohan\katharynduffy.github.io\ONAQ_extent", layer: "D15_ONAQ_C1_P1_v2"
 ## with 1 features
 ## It has 1 fields
 ```
@@ -2043,9 +2107,110 @@ prettify(status_response)                                           # Print the 
 ```
 
 ```
-## {
-##     "message": "You don't have the permission to access the requested resource. It is either read-protected or not readable by the server."
-## }
+## [
+##     {
+##         "error": {
+## 
+##         },
+##         "params": {
+##             "dates": [
+##                 {
+##                     "endDate": "10-01-2020",
+##                     "startDate": "01-01-2020"
+##                 }
+##             ],
+##             "layers": [
+##                 {
+##                     "layer": "LST_Day_1km",
+##                     "product": "MOD11A2.006"
+##                 },
+##                 {
+##                     "layer": "LST_Night_1km",
+##                     "product": "MOD11A2.006"
+##                 },
+##                 {
+##                     "layer": "Lai_500m",
+##                     "product": "MCD15A3H.006"
+##                 }
+##             ]
+##         },
+##         "status": "done",
+##         "created": "2022-09-29T00:01:49.833402",
+##         "task_id": "f6cd3e97-1424-4401-9440-434a19b53c5c",
+##         "updated": "2022-09-29T00:10:11.803810",
+##         "user_id": "rdb273@nau.edu",
+##         "attempts": 1,
+##         "estimate": {
+##             "request_size": 204
+##         },
+##         "retry_at": {
+## 
+##         },
+##         "completed": "2022-09-29T00:10:11.792231",
+##         "has_swath": false,
+##         "task_name": "NEON SOAP SJER Vegetation",
+##         "task_type": "point",
+##         "api_version": "v1",
+##         "svc_version": "3.12",
+##         "web_version": {
+## 
+##         },
+##         "size_category": "0",
+##         "has_nsidc_daac": false,
+##         "expires_on": "2022-11-28T00:10:11.803810"
+##     },
+##     {
+##         "error": {
+## 
+##         },
+##         "params": {
+##             "dates": [
+##                 {
+##                     "endDate": "10-01-2020",
+##                     "startDate": "01-01-2020"
+##                 }
+##             ],
+##             "layers": [
+##                 {
+##                     "layer": "LST_Day_1km",
+##                     "product": "MOD11A2.006"
+##                 },
+##                 {
+##                     "layer": "LST_Night_1km",
+##                     "product": "MOD11A2.006"
+##                 },
+##                 {
+##                     "layer": "Lai_500m",
+##                     "product": "MCD15A3H.006"
+##                 }
+##             ]
+##         },
+##         "status": "done",
+##         "created": "2022-09-29T00:00:00.370981",
+##         "task_id": "29c96457-4900-4631-8313-c41337ef3fbc",
+##         "updated": "2022-09-29T00:06:11.906162",
+##         "user_id": "rdb273@nau.edu",
+##         "attempts": 1,
+##         "estimate": {
+##             "request_size": 204
+##         },
+##         "retry_at": {
+## 
+##         },
+##         "completed": "2022-09-29T00:06:11.894539",
+##         "has_swath": false,
+##         "task_name": "NEON SOAP SJER Vegetation",
+##         "task_type": "point",
+##         "api_version": "v1",
+##         "svc_version": "3.12",
+##         "web_version": {
+## 
+##         },
+##         "size_category": "0",
+##         "has_nsidc_daac": false,
+##         "expires_on": "2022-11-28T00:06:11.906162"
+##     }
+## ]
 ## 
 ```
 
@@ -2110,46 +2275,31 @@ list.dirs(outDir)
 ```
 
 ```
-##  [1] "./data/"                                                                                     
-##  [2] "./data//__MACOSX"                                                                            
-##  [3] "./data//__MACOSX/All_NEON_TOS_Plots_V8"                                                      
-##  [4] "./data//All_NEON_TOS_Plots_V8"                                                               
-##  [5] "./data//AOP"                                                                                 
-##  [6] "./data//AOPTerrestrial"                                                                      
-##  [7] "./data//AOPTerrestrial 2"                                                                    
-##  [8] "./data//DP1.30003.001"                                                                       
-##  [9] "./data//DP1.30003.001/2017"                                                                  
-## [10] "./data//DP1.30003.001/2017/FullSite"                                                         
-## [11] "./data//DP1.30003.001/2017/FullSite/D16"                                                     
-## [12] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1"                                         
-## [13] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/L1"                                      
-## [14] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/L1/DiscreteLidar"                        
-## [15] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/L1/DiscreteLidar/ClassifiedPointCloud"   
-## [16] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/Metadata"                                
-## [17] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar"                  
-## [18] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary"     
-## [19] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/kmls"
-## [20] "./data//DP1.30003.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps"
-## [21] "./data//DP3.30015.001"                                                                       
-## [22] "./data//DP3.30015.001/2017"                                                                  
-## [23] "./data//DP3.30015.001/2017/FullSite"                                                         
-## [24] "./data//DP3.30015.001/2017/FullSite/D16"                                                     
-## [25] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1"                                         
-## [26] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/L3"                                      
-## [27] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar"                        
-## [28] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif"  
-## [29] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata"                                
-## [30] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar"                  
-## [31] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary"     
-## [32] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/kmls"
-## [33] "./data//DP3.30015.001/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps"
-## [34] "./data//filesToStack00200"                                                                   
-## [35] "./data//NEON_TOS"                                                                            
-## [36] "./data//pointreyes"                                                                          
-## [37] "./data//pointreyesclear"                                                                     
-## [38] "./data//pointreyesfoggy"                                                                     
-## [39] "./data//SJER"                                                                                
-## [40] "./data//SOAP"
+##  [1] "./data/"                                                                                                       
+##  [2] "./data//__MACOSX"                                                                                              
+##  [3] "./data//__MACOSX/All_NEON_TOS_Plots_V8"                                                                        
+##  [4] "./data//All_NEON_TOS_Plots_V8"                                                                                 
+##  [5] "./data//AOPTerrestrial"                                                                                        
+##  [6] "./data//DP3.30015.001"                                                                                         
+##  [7] "./data//DP3.30015.001/neon-aop-products"                                                                       
+##  [8] "./data//DP3.30015.001/neon-aop-products/2017"                                                                  
+##  [9] "./data//DP3.30015.001/neon-aop-products/2017/FullSite"                                                         
+## [10] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16"                                                     
+## [11] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1"                                         
+## [12] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/L3"                                      
+## [13] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar"                        
+## [14] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/L3/DiscreteLidar/CanopyHeightModelGtif"  
+## [15] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata"                                
+## [16] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar"                  
+## [17] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary"     
+## [18] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/kmls"
+## [19] "./data//DP3.30015.001/neon-aop-products/2017/FullSite/D16/2017_WREF_1/Metadata/DiscreteLidar/TileBoundary/shps"
+## [20] "./data//filesToStack00200"                                                                                     
+## [21] "./data//pointreyes"                                                                                            
+## [22] "./data//pointreyesclear"                                                                                       
+## [23] "./data//pointreyesfoggy"                                                                                       
+## [24] "./data//SJER"                                                                                                  
+## [25] "./data//SOAP"
 ```
 Below, the list of relative path and file names is assigned to a variable and part of the list is printed.
 
@@ -2186,57 +2336,63 @@ prettify(quality_response)
 ```
 ## [
 ##     {
-##         "ProductAndVersion": "CU_LT05.001",
+##         "ProductAndVersion": "HLSS30.020",
+##         "Layer": "B10",
+##         "QualityProductAndVersion": "HLSS30.020",
+##         "QualityLayers": [
+##             "Fmask"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "HLSS30.020",
+##         "Layer": "B11",
+##         "QualityProductAndVersion": "HLSS30.020",
+##         "QualityLayers": [
+##             "Fmask"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "HLSS30.020",
+##         "Layer": "B12",
+##         "QualityProductAndVersion": "HLSS30.020",
+##         "QualityLayers": [
+##             "Fmask"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "ASTGTM_NC.003",
+##         "Layer": "ASTER_GDEM_DEM",
+##         "QualityProductAndVersion": "ASTGTM_NUMNC.003",
+##         "QualityLayers": [
+##             "ASTER_GDEM_NUM"
+##         ],
+##         "Continuous": false,
+##         "VisibleToWorker": true
+##     },
+##     {
+##         "ProductAndVersion": "CU_LC08.001",
 ##         "Layer": "SRB1",
-##         "QualityProductAndVersion": "CU_LT05.001",
+##         "QualityProductAndVersion": "CU_LC08.001",
 ##         "QualityLayers": [
 ##             "PIXELQA"
 ##         ],
+##         "Continuous": false,
 ##         "VisibleToWorker": true
 ##     },
 ##     {
-##         "ProductAndVersion": "CU_LT05.001",
+##         "ProductAndVersion": "CU_LC08.001",
 ##         "Layer": "SRB2",
-##         "QualityProductAndVersion": "CU_LT05.001",
+##         "QualityProductAndVersion": "CU_LC08.001",
 ##         "QualityLayers": [
 ##             "PIXELQA"
 ##         ],
-##         "VisibleToWorker": true
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB3",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ],
-##         "VisibleToWorker": true
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB4",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ],
-##         "VisibleToWorker": true
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB5",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ],
-##         "VisibleToWorker": true
-##     },
-##     {
-##         "ProductAndVersion": "CU_LT05.001",
-##         "Layer": "SRB7",
-##         "QualityProductAndVersion": "CU_LT05.001",
-##         "QualityLayers": [
-##             "PIXELQA"
-##         ],
+##         "Continuous": false,
 ##         "VisibleToWorker": true
 ##     }
 ## ]
@@ -2535,8 +2691,6 @@ gplot(dem) +
         panel.grid.major = element_line(size = 0.001, linetype = 'solid',colour = "gray"),
         panel.grid.minor = element_line(size = 0.001, linetype = 'solid',colour = "gray"))
 ```
-
-<img src="08-NASA_EOS_files/figure-html/unnamed-chunk-81-1.png" width="768" />
 
 This example can provide a template to use for your own research workflows. Leveraging the AppEEARS API for searching, extracting, and formatting analysis ready data, and loading it directly into R means that you can keep your entire research workflow in a single software program, from start to finish.
 

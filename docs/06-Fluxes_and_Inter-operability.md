@@ -77,6 +77,7 @@ BiocManager::install('rhdf5')
 ```
 
 
+
 ```r
 options(stringsAsFactors=F)
 
@@ -115,11 +116,11 @@ zipsByProduct(dpID="DP4.00200.001", package="basic",
 ## Finding available files
 ##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
 ## 
-## Downloading files totaling approximately 320.5 MiB
+## Downloading files totaling approximately 345.260177 MB
 ```
 
 ```
-## Warning in dir.create(filepath): './data/filesToStack00200' already exists
+## ./data/filesToStack00200 already exists. Download will proceed, but check for duplicate files.
 ```
 
 ```
@@ -180,9 +181,9 @@ flux <- stackEddy(filepath="./data/filesToStack00200",
 ## Extracting data
 ##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
 ## Stacking data tables by month
-##   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   4%  |                                                                              |=====                                                                 |   7%  |                                                                              |========                                                              |  11%  |                                                                              |==========                                                            |  14%  |                                                                              |============                                                          |  18%  |                                                                              |===============                                                       |  21%  |                                                                              |==================                                                    |  25%  |                                                                              |====================                                                  |  29%  |                                                                              |======================                                                |  32%  |                                                                              |=========================                                             |  36%  |                                                                              |============================                                          |  39%  |                                                                              |==============================                                        |  43%  |                                                                              |================================                                      |  46%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================                                |  54%  |                                                                              |========================================                              |  57%  |                                                                              |==========================================                            |  61%  |                                                                              |=============================================                         |  64%  |                                                                              |================================================                      |  68%  |                                                                              |==================================================                    |  71%  |                                                                              |====================================================                  |  75%  |                                                                              |=======================================================               |  79%  |                                                                              |==========================================================            |  82%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  89%  |                                                                              |=================================================================     |  93%  |                                                                              |====================================================================  |  96%  |                                                                              |======================================================================| 100%
+##   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   2%  |                                                                              |===                                                                   |   5%  |                                                                              |=====                                                                 |   7%  |                                                                              |======                                                                |   9%  |                                                                              |========                                                              |  11%  |                                                                              |==========                                                            |  14%  |                                                                              |===========                                                           |  16%  |                                                                              |=============                                                         |  18%  |                                                                              |==============                                                        |  20%  |                                                                              |================                                                      |  23%  |                                                                              |==================                                                    |  25%  |                                                                              |===================                                                   |  27%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  32%  |                                                                              |========================                                              |  34%  |                                                                              |=========================                                             |  36%  |                                                                              |===========================                                           |  39%  |                                                                              |=============================                                         |  41%  |                                                                              |==============================                                        |  43%  |                                                                              |================================                                      |  45%  |                                                                              |=================================                                     |  48%  |                                                                              |===================================                                   |  50%  |                                                                              |=====================================                                 |  52%  |                                                                              |======================================                                |  55%  |                                                                              |========================================                              |  57%  |                                                                              |=========================================                             |  59%  |                                                                              |===========================================                           |  61%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  66%  |                                                                              |================================================                      |  68%  |                                                                              |=================================================                     |  70%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================                |  77%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  82%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  89%  |                                                                              |================================================================      |  91%  |                                                                              |=================================================================     |  93%  |                                                                              |===================================================================   |  95%  |                                                                              |====================================================================  |  98%  |                                                                              |======================================================================| 100%
 ## Joining data variables
-##   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   4%  |                                                                              |=====                                                                 |   7%  |                                                                              |========                                                              |  11%  |                                                                              |==========                                                            |  14%  |                                                                              |============                                                          |  18%  |                                                                              |===============                                                       |  21%  |                                                                              |==================                                                    |  25%  |                                                                              |====================                                                  |  29%  |                                                                              |======================                                                |  32%  |                                                                              |=========================                                             |  36%  |                                                                              |============================                                          |  39%  |                                                                              |==============================                                        |  43%  |                                                                              |================================                                      |  46%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================                                |  54%  |                                                                              |========================================                              |  57%  |                                                                              |==========================================                            |  61%  |                                                                              |=============================================                         |  64%  |                                                                              |================================================                      |  68%  |                                                                              |==================================================                    |  71%  |                                                                              |====================================================                  |  75%  |                                                                              |=======================================================               |  79%  |                                                                              |==========================================================            |  82%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  89%  |                                                                              |=================================================================     |  93%  |                                                                              |====================================================================  |  96%  |                                                                              |======================================================================| 100%
+##   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   2%  |                                                                              |===                                                                   |   5%  |                                                                              |=====                                                                 |   7%  |                                                                              |======                                                                |   9%  |                                                                              |========                                                              |  11%  |                                                                              |==========                                                            |  14%  |                                                                              |===========                                                           |  16%  |                                                                              |=============                                                         |  18%  |                                                                              |==============                                                        |  20%  |                                                                              |================                                                      |  23%  |                                                                              |==================                                                    |  25%  |                                                                              |===================                                                   |  27%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  32%  |                                                                              |========================                                              |  34%  |                                                                              |=========================                                             |  36%  |                                                                              |===========================                                           |  39%  |                                                                              |=============================                                         |  41%  |                                                                              |==============================                                        |  43%  |                                                                              |================================                                      |  45%  |                                                                              |=================================                                     |  48%  |                                                                              |===================================                                   |  50%  |                                                                              |=====================================                                 |  52%  |                                                                              |======================================                                |  55%  |                                                                              |========================================                              |  57%  |                                                                              |=========================================                             |  59%  |                                                                              |===========================================                           |  61%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  66%  |                                                                              |================================================                      |  68%  |                                                                              |=================================================                     |  70%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================                |  77%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  82%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  89%  |                                                                              |================================================================      |  91%  |                                                                              |=================================================================     |  93%  |                                                                              |===================================================================   |  95%  |                                                                              |====================================================================  |  98%  |                                                                              |======================================================================| 100%
 ```
 
 
@@ -198,7 +199,7 @@ names(flux)
 ```
 
 ```
-## [1] "HARV"      "NIWO"      "variables" "objDesc"
+## [1] "HARV"      "NIWO"      "variables" "objDesc"   "issueLog"
 ```
 
 
@@ -236,114 +237,146 @@ knitr::kable(head(flux$NIWO))
    <th style="text-align:right;"> data.foot.stat.distXaxs90 </th>
    <th style="text-align:right;"> data.foot.stat.distXaxsMax </th>
    <th style="text-align:right;"> data.foot.stat.distYaxs90 </th>
+   <th style="text-align:right;"> qfqm.fluxCo2.nsae.qfFinl </th>
    <th style="text-align:right;"> qfqm.fluxCo2.stor.qfFinl </th>
+   <th style="text-align:right;"> qfqm.fluxCo2.turb.qfFinl </th>
+   <th style="text-align:right;"> qfqm.fluxH2o.nsae.qfFinl </th>
    <th style="text-align:right;"> qfqm.fluxH2o.stor.qfFinl </th>
+   <th style="text-align:right;"> qfqm.fluxH2o.turb.qfFinl </th>
+   <th style="text-align:right;"> qfqm.fluxMome.turb.qfFinl </th>
+   <th style="text-align:right;"> qfqm.fluxTemp.nsae.qfFinl </th>
    <th style="text-align:right;"> qfqm.fluxTemp.stor.qfFinl </th>
+   <th style="text-align:right;"> qfqm.fluxTemp.turb.qfFinl </th>
+   <th style="text-align:right;"> qfqm.foot.turb.qfFinl </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T00:00:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T00:29:59.000Z </td>
-   <td style="text-align:right;"> 0.1111935 </td>
-   <td style="text-align:right;"> -0.0619119 </td>
-   <td style="text-align:right;"> 0.1731053 </td>
-   <td style="text-align:right;"> 19.401823 </td>
-   <td style="text-align:right;"> 3.2511265 </td>
-   <td style="text-align:right;"> 16.150697 </td>
-   <td style="text-align:right;"> 0.1970704 </td>
-   <td style="text-align:right;"> 4.1712006 </td>
-   <td style="text-align:right;"> -1.4227119 </td>
-   <td style="text-align:right;"> 5.593913 </td>
-   <td style="text-align:right;"> 94.90147 </td>
+   <td style="text-align:left;"> 2018-06-01 00:00:00 </td>
+   <td style="text-align:left;"> 2018-06-01 00:29:59 </td>
+   <td style="text-align:right;"> 0.1713858 </td>
+   <td style="text-align:right;"> -0.0634816 </td>
+   <td style="text-align:right;"> 0.2348674 </td>
+   <td style="text-align:right;"> 15.876622 </td>
+   <td style="text-align:right;"> 3.3334970 </td>
+   <td style="text-align:right;"> 12.543125 </td>
+   <td style="text-align:right;"> 0.2047081 </td>
+   <td style="text-align:right;"> 4.7565505 </td>
+   <td style="text-align:right;"> -1.4575094 </td>
+   <td style="text-align:right;"> 6.2140599 </td>
+   <td style="text-align:right;"> 94.2262 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.7734536 </td>
-   <td style="text-align:right;"> 0.2708072 </td>
-   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0.7955893 </td>
+   <td style="text-align:right;"> 0.2713232 </td>
+   <td style="text-align:right;"> 0.2025427 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.0322148 </td>
+   <td style="text-align:right;"> 0.0410571 </td>
    <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 333.60 </td>
+   <td style="text-align:right;"> 325.26 </td>
    <td style="text-align:right;"> 133.44 </td>
    <td style="text-align:right;"> 25.02 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T00:30:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T00:59:59.000Z </td>
-   <td style="text-align:right;"> 0.9328922 </td>
-   <td style="text-align:right;"> 0.0853412 </td>
-   <td style="text-align:right;"> 0.8475510 </td>
-   <td style="text-align:right;"> 10.444936 </td>
-   <td style="text-align:right;"> -1.1768333 </td>
-   <td style="text-align:right;"> 11.621770 </td>
-   <td style="text-align:right;"> 0.1969972 </td>
-   <td style="text-align:right;"> -0.9163691 </td>
-   <td style="text-align:right;"> 0.3331562 </td>
-   <td style="text-align:right;"> -1.249525 </td>
-   <td style="text-align:right;"> 354.70503 </td>
+   <td style="text-align:left;"> 2018-06-01 00:30:00 </td>
+   <td style="text-align:left;"> 2018-06-01 00:59:59 </td>
+   <td style="text-align:right;"> 0.9251711 </td>
+   <td style="text-align:right;"> 0.0874815 </td>
+   <td style="text-align:right;"> 0.8376896 </td>
+   <td style="text-align:right;"> 8.089274 </td>
+   <td style="text-align:right;"> -1.2063258 </td>
+   <td style="text-align:right;"> 9.295600 </td>
+   <td style="text-align:right;"> 0.1923735 </td>
+   <td style="text-align:right;"> -0.2717454 </td>
+   <td style="text-align:right;"> 0.3403877 </td>
+   <td style="text-align:right;"> -0.6121331 </td>
+   <td style="text-align:right;"> 355.4252 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.8450318 </td>
+   <td style="text-align:right;"> 0.8590177 </td>
    <td style="text-align:right;"> 0.2300000 </td>
-   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0.2000000 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.3300708 </td>
+   <td style="text-align:right;"> 0.2799194 </td>
    <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 258.54 </td>
+   <td style="text-align:right;"> 266.88 </td>
    <td style="text-align:right;"> 108.42 </td>
    <td style="text-align:right;"> 50.04 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2018-06-01T01:00:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T01:29:59.000Z </td>
-   <td style="text-align:right;"> 0.4673682 </td>
-   <td style="text-align:right;"> 0.0217722 </td>
-   <td style="text-align:right;"> 0.4455960 </td>
-   <td style="text-align:right;"> 5.140617 </td>
-   <td style="text-align:right;"> -4.3112673 </td>
-   <td style="text-align:right;"> 9.451884 </td>
-   <td style="text-align:right;"> 0.0651821 </td>
-   <td style="text-align:right;"> -2.9814957 </td>
-   <td style="text-align:right;"> 0.1825849 </td>
-   <td style="text-align:right;"> -3.164081 </td>
-   <td style="text-align:right;"> 358.86732 </td>
-   <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 1.2219162 </td>
-   <td style="text-align:right;"> 0.2300000 </td>
-   <td style="text-align:right;"> 0.2 </td>
-   <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.1287607 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 308.58 </td>
-   <td style="text-align:right;"> 125.10 </td>
-   <td style="text-align:right;"> 58.38 </td>
    <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T01:30:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T01:59:59.000Z </td>
-   <td style="text-align:right;"> 0.7263614 </td>
-   <td style="text-align:right;"> 0.2494437 </td>
-   <td style="text-align:right;"> 0.4769178 </td>
-   <td style="text-align:right;"> 9.017467 </td>
-   <td style="text-align:right;"> 0.1980776 </td>
-   <td style="text-align:right;"> 8.819389 </td>
-   <td style="text-align:right;"> 0.1296400 </td>
-   <td style="text-align:right;"> -13.3556222 </td>
-   <td style="text-align:right;"> -2.4317615 </td>
-   <td style="text-align:right;"> -10.923861 </td>
-   <td style="text-align:right;"> 137.68858 </td>
+   <td style="text-align:left;"> 2018-06-01 01:00:00 </td>
+   <td style="text-align:left;"> 2018-06-01 01:29:59 </td>
+   <td style="text-align:right;"> 0.5005812 </td>
+   <td style="text-align:right;"> 0.0223170 </td>
+   <td style="text-align:right;"> 0.4782642 </td>
+   <td style="text-align:right;"> 5.290594 </td>
+   <td style="text-align:right;"> -4.4190781 </td>
+   <td style="text-align:right;"> 9.709672 </td>
+   <td style="text-align:right;"> 0.1200918 </td>
+   <td style="text-align:right;"> -4.2055147 </td>
+   <td style="text-align:right;"> 0.1870677 </td>
+   <td style="text-align:right;"> -4.3925824 </td>
+   <td style="text-align:right;"> 359.8013 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.7325131 </td>
+   <td style="text-align:right;"> 1.2601763 </td>
    <td style="text-align:right;"> 0.2300000 </td>
-   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0.2000000 </td>
+   <td style="text-align:right;"> 8.34 </td>
+   <td style="text-align:right;"> 0.2129323 </td>
+   <td style="text-align:right;"> 1000 </td>
+   <td style="text-align:right;"> 275.22 </td>
+   <td style="text-align:right;"> 116.76 </td>
+   <td style="text-align:right;"> 66.72 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018-06-01 01:30:00 </td>
+   <td style="text-align:left;"> 2018-06-01 01:59:59 </td>
+   <td style="text-align:right;"> 0.8032820 </td>
+   <td style="text-align:right;"> 0.2556931 </td>
+   <td style="text-align:right;"> 0.5475889 </td>
+   <td style="text-align:right;"> 9.190214 </td>
+   <td style="text-align:right;"> 0.2030371 </td>
+   <td style="text-align:right;"> 8.987177 </td>
+   <td style="text-align:right;"> 0.1177545 </td>
+   <td style="text-align:right;"> -13.3834484 </td>
+   <td style="text-align:right;"> -2.4904300 </td>
+   <td style="text-align:right;"> -10.8930185 </td>
+   <td style="text-align:right;"> 137.7743 </td>
+   <td style="text-align:right;"> 8.34 </td>
+   <td style="text-align:right;"> 0.7332641 </td>
+   <td style="text-align:right;"> 0.2300000 </td>
+   <td style="text-align:right;"> 0.2000000 </td>
    <td style="text-align:right;"> 8.34 </td>
    <td style="text-align:right;"> 0.8340000 </td>
    <td style="text-align:right;"> 1000 </td>
@@ -353,25 +386,33 @@ knitr::kable(head(flux$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T02:00:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T02:29:59.000Z </td>
-   <td style="text-align:right;"> 0.4740572 </td>
-   <td style="text-align:right;"> 0.2252436 </td>
-   <td style="text-align:right;"> 0.2488136 </td>
-   <td style="text-align:right;"> 3.180385 </td>
-   <td style="text-align:right;"> 0.1316297 </td>
-   <td style="text-align:right;"> 3.048756 </td>
-   <td style="text-align:right;"> 0.1746071 </td>
-   <td style="text-align:right;"> -5.3406503 </td>
-   <td style="text-align:right;"> -0.7324937 </td>
-   <td style="text-align:right;"> -4.608157 </td>
-   <td style="text-align:right;"> 188.33767 </td>
+   <td style="text-align:left;"> 2018-06-01 02:00:00 </td>
+   <td style="text-align:left;"> 2018-06-01 02:29:59 </td>
+   <td style="text-align:right;"> 0.4897685 </td>
+   <td style="text-align:right;"> 0.2309047 </td>
+   <td style="text-align:right;"> 0.2588638 </td>
+   <td style="text-align:right;"> 3.111909 </td>
+   <td style="text-align:right;"> 0.1349363 </td>
+   <td style="text-align:right;"> 2.976973 </td>
+   <td style="text-align:right;"> 0.1589189 </td>
+   <td style="text-align:right;"> -5.1854815 </td>
+   <td style="text-align:right;"> -0.7514531 </td>
+   <td style="text-align:right;"> -4.4340284 </td>
+   <td style="text-align:right;"> 188.4799 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.7093743 </td>
+   <td style="text-align:right;"> 0.7096286 </td>
    <td style="text-align:right;"> 0.2300000 </td>
-   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0.2000000 </td>
    <td style="text-align:right;"> 8.34 </td>
    <td style="text-align:right;"> 0.8340000 </td>
    <td style="text-align:right;"> 1000 </td>
@@ -381,25 +422,33 @@ knitr::kable(head(flux$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T02:30:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T02:59:59.000Z </td>
-   <td style="text-align:right;"> 0.8807022 </td>
-   <td style="text-align:right;"> 0.0707801 </td>
-   <td style="text-align:right;"> 0.8099221 </td>
-   <td style="text-align:right;"> 4.398761 </td>
-   <td style="text-align:right;"> -0.2989443 </td>
-   <td style="text-align:right;"> 4.697706 </td>
-   <td style="text-align:right;"> 0.1047797 </td>
-   <td style="text-align:right;"> -7.2739206 </td>
-   <td style="text-align:right;"> -1.8616349 </td>
-   <td style="text-align:right;"> -5.412286 </td>
-   <td style="text-align:right;"> 183.15582 </td>
+   <td style="text-align:left;"> 2018-06-01 02:30:00 </td>
+   <td style="text-align:left;"> 2018-06-01 02:59:59 </td>
+   <td style="text-align:right;"> 0.9223979 </td>
+   <td style="text-align:right;"> 0.0622858 </td>
+   <td style="text-align:right;"> 0.8601121 </td>
+   <td style="text-align:right;"> 4.613676 </td>
+   <td style="text-align:right;"> -0.3929445 </td>
+   <td style="text-align:right;"> 5.006621 </td>
+   <td style="text-align:right;"> 0.1114406 </td>
+   <td style="text-align:right;"> -7.7365481 </td>
+   <td style="text-align:right;"> -1.9046775 </td>
+   <td style="text-align:right;"> -5.8318707 </td>
+   <td style="text-align:right;"> 183.1920 </td>
    <td style="text-align:right;"> 8.34 </td>
-   <td style="text-align:right;"> 0.3791676 </td>
+   <td style="text-align:right;"> 0.3789859 </td>
    <td style="text-align:right;"> 0.2300000 </td>
-   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0.2000000 </td>
    <td style="text-align:right;"> 8.34 </td>
    <td style="text-align:right;"> 0.8340000 </td>
    <td style="text-align:right;"> 1000 </td>
@@ -408,6 +457,14 @@ knitr::kable(head(flux$NIWO))
    <td style="text-align:right;"> 41.70 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -720,7 +777,43 @@ knitr::kable(term)
    <td style="text-align:left;"> fluxCo2 </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> nsae </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fluxCo2 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> stor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fluxCo2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fluxH2o </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> nsae </td>
   </tr>
   <tr>
    <td style="text-align:left;"> qfFinl </td>
@@ -741,10 +834,70 @@ knitr::kable(term)
    <td style="text-align:left;"> qfqm </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> fluxH2o </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fluxMome </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fluxTemp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> nsae </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> fluxTemp </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stor </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fluxTemp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfFinl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> foot </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turb </td>
   </tr>
   <tr>
    <td style="text-align:left;"> qfFinl </td>
@@ -783,71 +936,225 @@ knitr::kable(flux$variables)
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxCo2 </td>
    <td style="text-align:left;"> nsae </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> umolCo2 m-2 s-1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxCo2 </td>
    <td style="text-align:left;"> stor </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> umolCo2 m-2 s-1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxCo2 </td>
    <td style="text-align:left;"> turb </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> umolCo2 m-2 s-1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxH2o </td>
    <td style="text-align:left;"> nsae </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> W m-2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxH2o </td>
    <td style="text-align:left;"> stor </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> W m-2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxH2o </td>
    <td style="text-align:left;"> turb </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> W m-2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxMome </td>
    <td style="text-align:left;"> turb </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxMome </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxMome </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> veloFric </td>
    <td style="text-align:left;"> m s-1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxTemp </td>
    <td style="text-align:left;"> nsae </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> W m-2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxTemp </td>
    <td style="text-align:left;"> stor </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> W m-2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> fluxTemp </td>
    <td style="text-align:left;"> turb </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> flux </td>
    <td style="text-align:left;"> W m-2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> foot </td>
+   <td style="text-align:left;"> stat </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> foot </td>
+   <td style="text-align:left;"> stat </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data </td>
@@ -929,22 +1236,232 @@ knitr::kable(flux$variables)
   <tr>
    <td style="text-align:left;"> qfqm </td>
    <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
    <td style="text-align:left;"> stor </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxCo2 </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> qfFinl </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
    <td style="text-align:left;"> qfqm </td>
    <td style="text-align:left;"> fluxH2o </td>
    <td style="text-align:left;"> stor </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxH2o </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxMome </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxMome </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxMome </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> nsae </td>
+   <td style="text-align:left;"> qfFinl </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
    <td style="text-align:left;"> qfqm </td>
    <td style="text-align:left;"> fluxTemp </td>
    <td style="text-align:left;"> stor </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> stor </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> fluxTemp </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> qfFinl </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> foot </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeBgn </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> foot </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> timeEnd </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> qfqm </td>
+   <td style="text-align:left;"> foot </td>
+   <td style="text-align:left;"> turb </td>
+   <td style="text-align:left;"> qfFinl </td>
    <td style="text-align:left;"> NA </td>
   </tr>
 </tbody>
@@ -1057,10 +1574,11 @@ pr <- loadByProduct("DP1.00024.001", site="NIWO", avg=30,
 ```
 
 ```
+## Input parameter avg is deprecated; use timeIndex to download by time interval.
 ## Finding available files
 ##   |                                                                              |                                                                      |   0%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================================================| 100%
 ## 
-## Downloading files totaling approximately 1.2 MiB
+## Downloading files totaling approximately 1.304794 MB
 ## Downloading 11 files
 ##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%
 ## 
@@ -1068,9 +1586,8 @@ pr <- loadByProduct("DP1.00024.001", site="NIWO", avg=30,
 ## Stacking table PARPAR_30min
 ## Merged the most recent publication of sensor position files for each site and saved to /stackedFiles
 ## Copied the most recent publication of variable definition file to /stackedFiles
-## Finished: Stacked 1 data tables and 2 metadata tables!
-## Stacking took 0.179601 secs
-## All unzipped monthly data folders have been removed.
+## Finished: Stacked 1 data tables and 3 metadata tables!
+## Stacking took 0.3359709 secs
 ```
 
 
@@ -1669,8 +2186,8 @@ knitr::kable(head(prof$NIWO))
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T00:00:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T00:29:59.000Z </td>
+   <td style="text-align:left;"> 2018-06-01 00:00:00 </td>
+   <td style="text-align:left;"> 2018-06-01 00:29:59 </td>
    <td style="text-align:right;"> -0.0002682 </td>
    <td style="text-align:right;"> -0.0002682 </td>
    <td style="text-align:right;"> -0.0002682 </td>
@@ -1886,43 +2403,43 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> -0.0002172 </td>
    <td style="text-align:right;"> -0.0002190 </td>
    <td style="text-align:right;"> -0.0002208 </td>
-   <td style="text-align:right;"> -0.0002226 </td>
-   <td style="text-align:right;"> -0.0002244 </td>
-   <td style="text-align:right;"> -0.0002262 </td>
-   <td style="text-align:right;"> -0.0002279 </td>
-   <td style="text-align:right;"> -0.0002297 </td>
-   <td style="text-align:right;"> -0.0002315 </td>
-   <td style="text-align:right;"> -0.0002333 </td>
-   <td style="text-align:right;"> -0.0002351 </td>
-   <td style="text-align:right;"> -0.0002369 </td>
-   <td style="text-align:right;"> -0.0002387 </td>
-   <td style="text-align:right;"> -0.0002404 </td>
-   <td style="text-align:right;"> -0.0002422 </td>
-   <td style="text-align:right;"> -0.0002440 </td>
-   <td style="text-align:right;"> -0.0002458 </td>
-   <td style="text-align:right;"> -0.0002476 </td>
-   <td style="text-align:right;"> -0.0002494 </td>
-   <td style="text-align:right;"> -0.0002512 </td>
-   <td style="text-align:right;"> -0.0002529 </td>
-   <td style="text-align:right;"> -0.0002547 </td>
-   <td style="text-align:right;"> -0.0002565 </td>
-   <td style="text-align:right;"> -0.0002583 </td>
-   <td style="text-align:right;"> -0.0002601 </td>
-   <td style="text-align:right;"> -0.0002619 </td>
-   <td style="text-align:right;"> -0.0002637 </td>
-   <td style="text-align:right;"> -0.0002654 </td>
-   <td style="text-align:right;"> -0.0002672 </td>
-   <td style="text-align:right;"> -0.0002690 </td>
-   <td style="text-align:right;"> -0.0002708 </td>
-   <td style="text-align:right;"> -0.0002726 </td>
-   <td style="text-align:right;"> -0.0002744 </td>
-   <td style="text-align:right;"> -0.0002762 </td>
-   <td style="text-align:right;"> -0.0002779 </td>
-   <td style="text-align:right;"> -0.0002797 </td>
-   <td style="text-align:right;"> -0.0002815 </td>
-   <td style="text-align:right;"> -0.0002833 </td>
-   <td style="text-align:right;"> -0.0002851 </td>
-   <td style="text-align:right;"> -0.0002869 </td>
+   <td style="text-align:right;"> -0.0002225 </td>
+   <td style="text-align:right;"> -0.0002243 </td>
+   <td style="text-align:right;"> -0.0002261 </td>
+   <td style="text-align:right;"> -0.0002278 </td>
+   <td style="text-align:right;"> -0.0002296 </td>
+   <td style="text-align:right;"> -0.0002314 </td>
+   <td style="text-align:right;"> -0.0002332 </td>
+   <td style="text-align:right;"> -0.0002349 </td>
+   <td style="text-align:right;"> -0.0002367 </td>
+   <td style="text-align:right;"> -0.0002385 </td>
+   <td style="text-align:right;"> -0.0002402 </td>
+   <td style="text-align:right;"> -0.0002420 </td>
+   <td style="text-align:right;"> -0.0002438 </td>
+   <td style="text-align:right;"> -0.0002456 </td>
+   <td style="text-align:right;"> -0.0002473 </td>
+   <td style="text-align:right;"> -0.0002491 </td>
+   <td style="text-align:right;"> -0.0002509 </td>
+   <td style="text-align:right;"> -0.0002526 </td>
+   <td style="text-align:right;"> -0.0002544 </td>
+   <td style="text-align:right;"> -0.0002562 </td>
+   <td style="text-align:right;"> -0.0002580 </td>
+   <td style="text-align:right;"> -0.0002597 </td>
+   <td style="text-align:right;"> -0.0002615 </td>
+   <td style="text-align:right;"> -0.0002633 </td>
+   <td style="text-align:right;"> -0.0002651 </td>
+   <td style="text-align:right;"> -0.0002668 </td>
+   <td style="text-align:right;"> -0.0002686 </td>
+   <td style="text-align:right;"> -0.0002704 </td>
+   <td style="text-align:right;"> -0.0002721 </td>
+   <td style="text-align:right;"> -0.0002739 </td>
+   <td style="text-align:right;"> -0.0002757 </td>
+   <td style="text-align:right;"> -0.0002775 </td>
+   <td style="text-align:right;"> -0.0002792 </td>
+   <td style="text-align:right;"> -0.0002810 </td>
+   <td style="text-align:right;"> -0.0002828 </td>
+   <td style="text-align:right;"> -0.0002845 </td>
+   <td style="text-align:right;"> -0.0002863 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
@@ -2177,8 +2694,8 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T00:30:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T00:59:59.000Z </td>
+   <td style="text-align:left;"> 2018-06-01 00:30:00 </td>
+   <td style="text-align:left;"> 2018-06-01 00:59:59 </td>
    <td style="text-align:right;"> 0.0004879 </td>
    <td style="text-align:right;"> 0.0004879 </td>
    <td style="text-align:right;"> 0.0004879 </td>
@@ -2394,43 +2911,43 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0.0000836 </td>
    <td style="text-align:right;"> 0.0000854 </td>
    <td style="text-align:right;"> 0.0000872 </td>
-   <td style="text-align:right;"> 0.0000891 </td>
-   <td style="text-align:right;"> 0.0000909 </td>
-   <td style="text-align:right;"> 0.0000927 </td>
-   <td style="text-align:right;"> 0.0000945 </td>
-   <td style="text-align:right;"> 0.0000963 </td>
-   <td style="text-align:right;"> 0.0000981 </td>
-   <td style="text-align:right;"> 0.0000999 </td>
-   <td style="text-align:right;"> 0.0001017 </td>
-   <td style="text-align:right;"> 0.0001035 </td>
-   <td style="text-align:right;"> 0.0001053 </td>
-   <td style="text-align:right;"> 0.0001071 </td>
-   <td style="text-align:right;"> 0.0001090 </td>
-   <td style="text-align:right;"> 0.0001108 </td>
-   <td style="text-align:right;"> 0.0001126 </td>
-   <td style="text-align:right;"> 0.0001144 </td>
-   <td style="text-align:right;"> 0.0001162 </td>
-   <td style="text-align:right;"> 0.0001180 </td>
-   <td style="text-align:right;"> 0.0001198 </td>
-   <td style="text-align:right;"> 0.0001216 </td>
-   <td style="text-align:right;"> 0.0001234 </td>
-   <td style="text-align:right;"> 0.0001252 </td>
-   <td style="text-align:right;"> 0.0001271 </td>
-   <td style="text-align:right;"> 0.0001289 </td>
-   <td style="text-align:right;"> 0.0001307 </td>
-   <td style="text-align:right;"> 0.0001325 </td>
-   <td style="text-align:right;"> 0.0001343 </td>
-   <td style="text-align:right;"> 0.0001361 </td>
-   <td style="text-align:right;"> 0.0001379 </td>
-   <td style="text-align:right;"> 0.0001397 </td>
-   <td style="text-align:right;"> 0.0001415 </td>
-   <td style="text-align:right;"> 0.0001433 </td>
-   <td style="text-align:right;"> 0.0001451 </td>
-   <td style="text-align:right;"> 0.0001470 </td>
-   <td style="text-align:right;"> 0.0001488 </td>
-   <td style="text-align:right;"> 0.0001506 </td>
-   <td style="text-align:right;"> 0.0001524 </td>
-   <td style="text-align:right;"> 0.0001542 </td>
+   <td style="text-align:right;"> 0.0000890 </td>
+   <td style="text-align:right;"> 0.0000908 </td>
+   <td style="text-align:right;"> 0.0000926 </td>
+   <td style="text-align:right;"> 0.0000944 </td>
+   <td style="text-align:right;"> 0.0000962 </td>
+   <td style="text-align:right;"> 0.0000980 </td>
+   <td style="text-align:right;"> 0.0000998 </td>
+   <td style="text-align:right;"> 0.0001016 </td>
+   <td style="text-align:right;"> 0.0001033 </td>
+   <td style="text-align:right;"> 0.0001051 </td>
+   <td style="text-align:right;"> 0.0001069 </td>
+   <td style="text-align:right;"> 0.0001087 </td>
+   <td style="text-align:right;"> 0.0001105 </td>
+   <td style="text-align:right;"> 0.0001123 </td>
+   <td style="text-align:right;"> 0.0001141 </td>
+   <td style="text-align:right;"> 0.0001159 </td>
+   <td style="text-align:right;"> 0.0001177 </td>
+   <td style="text-align:right;"> 0.0001195 </td>
+   <td style="text-align:right;"> 0.0001213 </td>
+   <td style="text-align:right;"> 0.0001231 </td>
+   <td style="text-align:right;"> 0.0001249 </td>
+   <td style="text-align:right;"> 0.0001267 </td>
+   <td style="text-align:right;"> 0.0001285 </td>
+   <td style="text-align:right;"> 0.0001303 </td>
+   <td style="text-align:right;"> 0.0001320 </td>
+   <td style="text-align:right;"> 0.0001338 </td>
+   <td style="text-align:right;"> 0.0001356 </td>
+   <td style="text-align:right;"> 0.0001374 </td>
+   <td style="text-align:right;"> 0.0001392 </td>
+   <td style="text-align:right;"> 0.0001410 </td>
+   <td style="text-align:right;"> 0.0001428 </td>
+   <td style="text-align:right;"> 0.0001446 </td>
+   <td style="text-align:right;"> 0.0001464 </td>
+   <td style="text-align:right;"> 0.0001482 </td>
+   <td style="text-align:right;"> 0.0001500 </td>
+   <td style="text-align:right;"> 0.0001518 </td>
+   <td style="text-align:right;"> 0.0001536 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
@@ -2515,90 +3032,90 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -2685,8 +3202,8 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T01:00:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T01:29:59.000Z </td>
+   <td style="text-align:left;"> 2018-06-01 01:00:00 </td>
+   <td style="text-align:left;"> 2018-06-01 01:29:59 </td>
    <td style="text-align:right;"> 0.0005086 </td>
    <td style="text-align:right;"> 0.0005086 </td>
    <td style="text-align:right;"> 0.0005086 </td>
@@ -2935,7 +3452,7 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0.0001573 </td>
    <td style="text-align:right;"> 0.0001598 </td>
    <td style="text-align:right;"> 0.0001623 </td>
-   <td style="text-align:right;"> 0.0001649 </td>
+   <td style="text-align:right;"> 0.0001648 </td>
    <td style="text-align:right;"> 0.0001674 </td>
    <td style="text-align:right;"> 0.0001699 </td>
    <td style="text-align:right;"> 0.0001724 </td>
@@ -3023,90 +3540,90 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -3193,8 +3710,8 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T01:30:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T01:59:59.000Z </td>
+   <td style="text-align:left;"> 2018-06-01 01:30:00 </td>
+   <td style="text-align:left;"> 2018-06-01 01:59:59 </td>
    <td style="text-align:right;"> 0.0013277 </td>
    <td style="text-align:right;"> 0.0013277 </td>
    <td style="text-align:right;"> 0.0013277 </td>
@@ -3409,44 +3926,44 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> -0.0002159 </td>
    <td style="text-align:right;"> -0.0002160 </td>
    <td style="text-align:right;"> -0.0002161 </td>
+   <td style="text-align:right;"> -0.0002162 </td>
    <td style="text-align:right;"> -0.0002163 </td>
    <td style="text-align:right;"> -0.0002164 </td>
    <td style="text-align:right;"> -0.0002165 </td>
+   <td style="text-align:right;"> -0.0002166 </td>
    <td style="text-align:right;"> -0.0002167 </td>
    <td style="text-align:right;"> -0.0002168 </td>
    <td style="text-align:right;"> -0.0002169 </td>
+   <td style="text-align:right;"> -0.0002170 </td>
    <td style="text-align:right;"> -0.0002171 </td>
-   <td style="text-align:right;"> -0.0002172 </td>
    <td style="text-align:right;"> -0.0002173 </td>
+   <td style="text-align:right;"> -0.0002174 </td>
    <td style="text-align:right;"> -0.0002175 </td>
    <td style="text-align:right;"> -0.0002176 </td>
    <td style="text-align:right;"> -0.0002177 </td>
+   <td style="text-align:right;"> -0.0002178 </td>
    <td style="text-align:right;"> -0.0002179 </td>
    <td style="text-align:right;"> -0.0002180 </td>
    <td style="text-align:right;"> -0.0002181 </td>
+   <td style="text-align:right;"> -0.0002182 </td>
    <td style="text-align:right;"> -0.0002183 </td>
    <td style="text-align:right;"> -0.0002184 </td>
    <td style="text-align:right;"> -0.0002185 </td>
-   <td style="text-align:right;"> -0.0002187 </td>
+   <td style="text-align:right;"> -0.0002186 </td>
    <td style="text-align:right;"> -0.0002188 </td>
    <td style="text-align:right;"> -0.0002189 </td>
+   <td style="text-align:right;"> -0.0002190 </td>
    <td style="text-align:right;"> -0.0002191 </td>
    <td style="text-align:right;"> -0.0002192 </td>
    <td style="text-align:right;"> -0.0002193 </td>
+   <td style="text-align:right;"> -0.0002194 </td>
    <td style="text-align:right;"> -0.0002195 </td>
    <td style="text-align:right;"> -0.0002196 </td>
    <td style="text-align:right;"> -0.0002197 </td>
+   <td style="text-align:right;"> -0.0002198 </td>
    <td style="text-align:right;"> -0.0002199 </td>
    <td style="text-align:right;"> -0.0002200 </td>
    <td style="text-align:right;"> -0.0002201 </td>
-   <td style="text-align:right;"> -0.0002203 </td>
-   <td style="text-align:right;"> -0.0002204 </td>
-   <td style="text-align:right;"> -0.0002205 </td>
-   <td style="text-align:right;"> -0.0002207 </td>
-   <td style="text-align:right;"> -0.0002208 </td>
-   <td style="text-align:right;"> -0.0002209 </td>
-   <td style="text-align:right;"> -0.0002211 </td>
-   <td style="text-align:right;"> -0.0002212 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
@@ -3531,90 +4048,90 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -3701,8 +4218,8 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T02:00:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T02:29:59.000Z </td>
+   <td style="text-align:left;"> 2018-06-01 02:00:00 </td>
+   <td style="text-align:left;"> 2018-06-01 02:29:59 </td>
    <td style="text-align:right;"> 0.0007344 </td>
    <td style="text-align:right;"> 0.0007344 </td>
    <td style="text-align:right;"> 0.0007344 </td>
@@ -3918,43 +4435,43 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0.0000066 </td>
    <td style="text-align:right;"> 0.0000064 </td>
    <td style="text-align:right;"> 0.0000062 </td>
-   <td style="text-align:right;"> 0.0000060 </td>
-   <td style="text-align:right;"> 0.0000058 </td>
+   <td style="text-align:right;"> 0.0000059 </td>
+   <td style="text-align:right;"> 0.0000057 </td>
    <td style="text-align:right;"> 0.0000055 </td>
-   <td style="text-align:right;"> 0.0000053 </td>
-   <td style="text-align:right;"> 0.0000051 </td>
-   <td style="text-align:right;"> 0.0000049 </td>
-   <td style="text-align:right;"> 0.0000047 </td>
-   <td style="text-align:right;"> 0.0000044 </td>
-   <td style="text-align:right;"> 0.0000042 </td>
-   <td style="text-align:right;"> 0.0000040 </td>
-   <td style="text-align:right;"> 0.0000038 </td>
-   <td style="text-align:right;"> 0.0000035 </td>
-   <td style="text-align:right;"> 0.0000033 </td>
-   <td style="text-align:right;"> 0.0000031 </td>
+   <td style="text-align:right;"> 0.0000052 </td>
+   <td style="text-align:right;"> 0.0000050 </td>
+   <td style="text-align:right;"> 0.0000048 </td>
+   <td style="text-align:right;"> 0.0000045 </td>
+   <td style="text-align:right;"> 0.0000043 </td>
+   <td style="text-align:right;"> 0.0000041 </td>
+   <td style="text-align:right;"> 0.0000039 </td>
+   <td style="text-align:right;"> 0.0000036 </td>
+   <td style="text-align:right;"> 0.0000034 </td>
+   <td style="text-align:right;"> 0.0000032 </td>
    <td style="text-align:right;"> 0.0000029 </td>
    <td style="text-align:right;"> 0.0000027 </td>
-   <td style="text-align:right;"> 0.0000024 </td>
+   <td style="text-align:right;"> 0.0000025 </td>
    <td style="text-align:right;"> 0.0000022 </td>
    <td style="text-align:right;"> 0.0000020 </td>
    <td style="text-align:right;"> 0.0000018 </td>
-   <td style="text-align:right;"> 0.0000016 </td>
+   <td style="text-align:right;"> 0.0000015 </td>
    <td style="text-align:right;"> 0.0000013 </td>
    <td style="text-align:right;"> 0.0000011 </td>
-   <td style="text-align:right;"> 0.0000009 </td>
-   <td style="text-align:right;"> 0.0000007 </td>
-   <td style="text-align:right;"> 0.0000005 </td>
+   <td style="text-align:right;"> 0.0000008 </td>
+   <td style="text-align:right;"> 0.0000006 </td>
+   <td style="text-align:right;"> 0.0000004 </td>
    <td style="text-align:right;"> 0.0000002 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> -0.0000002 </td>
-   <td style="text-align:right;"> -0.0000004 </td>
-   <td style="text-align:right;"> -0.0000007 </td>
-   <td style="text-align:right;"> -0.0000009 </td>
-   <td style="text-align:right;"> -0.0000011 </td>
-   <td style="text-align:right;"> -0.0000013 </td>
+   <td style="text-align:right;"> -0.0000001 </td>
+   <td style="text-align:right;"> -0.0000003 </td>
+   <td style="text-align:right;"> -0.0000005 </td>
+   <td style="text-align:right;"> -0.0000008 </td>
+   <td style="text-align:right;"> -0.0000010 </td>
+   <td style="text-align:right;"> -0.0000012 </td>
    <td style="text-align:right;"> -0.0000015 </td>
-   <td style="text-align:right;"> -0.0000018 </td>
-   <td style="text-align:right;"> -0.0000020 </td>
+   <td style="text-align:right;"> -0.0000017 </td>
+   <td style="text-align:right;"> -0.0000019 </td>
+   <td style="text-align:right;"> -0.0000022 </td>
+   <td style="text-align:right;"> -0.0000024 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
@@ -4039,90 +4556,90 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -4209,8 +4726,8 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2018-06-01T02:30:00.000Z </td>
-   <td style="text-align:left;"> 2018-06-01T02:59:59.000Z </td>
+   <td style="text-align:left;"> 2018-06-01 02:30:00 </td>
+   <td style="text-align:left;"> 2018-06-01 02:59:59 </td>
    <td style="text-align:right;"> -0.0009450 </td>
    <td style="text-align:right;"> -0.0009450 </td>
    <td style="text-align:right;"> -0.0009450 </td>
@@ -4255,46 +4772,46 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> -0.0002288 </td>
    <td style="text-align:right;"> -0.0003767 </td>
    <td style="text-align:right;"> -0.0005245 </td>
-   <td style="text-align:right;"> -0.0005201 </td>
-   <td style="text-align:right;"> -0.0005157 </td>
-   <td style="text-align:right;"> -0.0005112 </td>
-   <td style="text-align:right;"> -0.0005068 </td>
-   <td style="text-align:right;"> -0.0005024 </td>
-   <td style="text-align:right;"> -0.0004979 </td>
-   <td style="text-align:right;"> -0.0004935 </td>
-   <td style="text-align:right;"> -0.0004891 </td>
-   <td style="text-align:right;"> -0.0004846 </td>
-   <td style="text-align:right;"> -0.0004802 </td>
-   <td style="text-align:right;"> -0.0004757 </td>
-   <td style="text-align:right;"> -0.0004713 </td>
-   <td style="text-align:right;"> -0.0004669 </td>
-   <td style="text-align:right;"> -0.0004624 </td>
-   <td style="text-align:right;"> -0.0004580 </td>
-   <td style="text-align:right;"> -0.0004536 </td>
-   <td style="text-align:right;"> -0.0004491 </td>
-   <td style="text-align:right;"> -0.0004447 </td>
-   <td style="text-align:right;"> -0.0004403 </td>
-   <td style="text-align:right;"> -0.0004358 </td>
-   <td style="text-align:right;"> -0.0004314 </td>
-   <td style="text-align:right;"> -0.0004269 </td>
-   <td style="text-align:right;"> -0.0004225 </td>
-   <td style="text-align:right;"> -0.0004181 </td>
-   <td style="text-align:right;"> -0.0004136 </td>
-   <td style="text-align:right;"> -0.0004092 </td>
-   <td style="text-align:right;"> -0.0004048 </td>
-   <td style="text-align:right;"> -0.0004003 </td>
-   <td style="text-align:right;"> -0.0003959 </td>
-   <td style="text-align:right;"> -0.0003915 </td>
-   <td style="text-align:right;"> -0.0003870 </td>
-   <td style="text-align:right;"> -0.0003826 </td>
-   <td style="text-align:right;"> -0.0003782 </td>
-   <td style="text-align:right;"> -0.0003737 </td>
-   <td style="text-align:right;"> -0.0003693 </td>
-   <td style="text-align:right;"> -0.0003648 </td>
-   <td style="text-align:right;"> -0.0003604 </td>
-   <td style="text-align:right;"> -0.0003560 </td>
-   <td style="text-align:right;"> -0.0003515 </td>
-   <td style="text-align:right;"> -0.0003471 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
+   <td style="text-align:right;"> -0.0005245 </td>
    <td style="text-align:right;"> -0.0001513 </td>
    <td style="text-align:right;"> -0.0001513 </td>
    <td style="text-align:right;"> -0.0001513 </td>
@@ -4339,46 +4856,46 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> -0.0000423 </td>
    <td style="text-align:right;"> -0.0000474 </td>
    <td style="text-align:right;"> -0.0000524 </td>
-   <td style="text-align:right;"> -0.0000516 </td>
-   <td style="text-align:right;"> -0.0000508 </td>
-   <td style="text-align:right;"> -0.0000499 </td>
-   <td style="text-align:right;"> -0.0000491 </td>
-   <td style="text-align:right;"> -0.0000482 </td>
-   <td style="text-align:right;"> -0.0000474 </td>
-   <td style="text-align:right;"> -0.0000466 </td>
-   <td style="text-align:right;"> -0.0000457 </td>
-   <td style="text-align:right;"> -0.0000449 </td>
-   <td style="text-align:right;"> -0.0000441 </td>
-   <td style="text-align:right;"> -0.0000432 </td>
-   <td style="text-align:right;"> -0.0000424 </td>
-   <td style="text-align:right;"> -0.0000415 </td>
-   <td style="text-align:right;"> -0.0000407 </td>
-   <td style="text-align:right;"> -0.0000399 </td>
-   <td style="text-align:right;"> -0.0000390 </td>
-   <td style="text-align:right;"> -0.0000382 </td>
-   <td style="text-align:right;"> -0.0000373 </td>
-   <td style="text-align:right;"> -0.0000365 </td>
-   <td style="text-align:right;"> -0.0000357 </td>
-   <td style="text-align:right;"> -0.0000348 </td>
-   <td style="text-align:right;"> -0.0000340 </td>
-   <td style="text-align:right;"> -0.0000332 </td>
-   <td style="text-align:right;"> -0.0000323 </td>
-   <td style="text-align:right;"> -0.0000315 </td>
-   <td style="text-align:right;"> -0.0000306 </td>
-   <td style="text-align:right;"> -0.0000298 </td>
-   <td style="text-align:right;"> -0.0000290 </td>
-   <td style="text-align:right;"> -0.0000281 </td>
-   <td style="text-align:right;"> -0.0000273 </td>
-   <td style="text-align:right;"> -0.0000265 </td>
-   <td style="text-align:right;"> -0.0000256 </td>
-   <td style="text-align:right;"> -0.0000248 </td>
-   <td style="text-align:right;"> -0.0000239 </td>
-   <td style="text-align:right;"> -0.0000231 </td>
-   <td style="text-align:right;"> -0.0000223 </td>
-   <td style="text-align:right;"> -0.0000214 </td>
-   <td style="text-align:right;"> -0.0000206 </td>
-   <td style="text-align:right;"> -0.0000197 </td>
-   <td style="text-align:right;"> -0.0000189 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
+   <td style="text-align:right;"> -0.0000524 </td>
    <td style="text-align:right;"> -0.0010168 </td>
    <td style="text-align:right;"> -0.0010168 </td>
    <td style="text-align:right;"> -0.0010168 </td>
@@ -4424,45 +4941,45 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> -0.0001656 </td>
    <td style="text-align:right;"> -0.0001662 </td>
    <td style="text-align:right;"> -0.0001655 </td>
-   <td style="text-align:right;"> -0.0001648 </td>
-   <td style="text-align:right;"> -0.0001640 </td>
-   <td style="text-align:right;"> -0.0001633 </td>
-   <td style="text-align:right;"> -0.0001626 </td>
-   <td style="text-align:right;"> -0.0001618 </td>
-   <td style="text-align:right;"> -0.0001611 </td>
-   <td style="text-align:right;"> -0.0001603 </td>
-   <td style="text-align:right;"> -0.0001596 </td>
-   <td style="text-align:right;"> -0.0001589 </td>
-   <td style="text-align:right;"> -0.0001581 </td>
-   <td style="text-align:right;"> -0.0001574 </td>
-   <td style="text-align:right;"> -0.0001566 </td>
-   <td style="text-align:right;"> -0.0001559 </td>
+   <td style="text-align:right;"> -0.0001647 </td>
+   <td style="text-align:right;"> -0.0001639 </td>
+   <td style="text-align:right;"> -0.0001631 </td>
+   <td style="text-align:right;"> -0.0001623 </td>
+   <td style="text-align:right;"> -0.0001615 </td>
+   <td style="text-align:right;"> -0.0001607 </td>
+   <td style="text-align:right;"> -0.0001600 </td>
+   <td style="text-align:right;"> -0.0001592 </td>
+   <td style="text-align:right;"> -0.0001584 </td>
+   <td style="text-align:right;"> -0.0001576 </td>
+   <td style="text-align:right;"> -0.0001568 </td>
+   <td style="text-align:right;"> -0.0001560 </td>
    <td style="text-align:right;"> -0.0001552 </td>
-   <td style="text-align:right;"> -0.0001544 </td>
+   <td style="text-align:right;"> -0.0001545 </td>
    <td style="text-align:right;"> -0.0001537 </td>
-   <td style="text-align:right;"> -0.0001530 </td>
-   <td style="text-align:right;"> -0.0001522 </td>
-   <td style="text-align:right;"> -0.0001515 </td>
-   <td style="text-align:right;"> -0.0001507 </td>
-   <td style="text-align:right;"> -0.0001500 </td>
-   <td style="text-align:right;"> -0.0001493 </td>
-   <td style="text-align:right;"> -0.0001485 </td>
-   <td style="text-align:right;"> -0.0001478 </td>
-   <td style="text-align:right;"> -0.0001470 </td>
-   <td style="text-align:right;"> -0.0001463 </td>
-   <td style="text-align:right;"> -0.0001456 </td>
-   <td style="text-align:right;"> -0.0001448 </td>
-   <td style="text-align:right;"> -0.0001441 </td>
-   <td style="text-align:right;"> -0.0001434 </td>
-   <td style="text-align:right;"> -0.0001426 </td>
+   <td style="text-align:right;"> -0.0001529 </td>
+   <td style="text-align:right;"> -0.0001521 </td>
+   <td style="text-align:right;"> -0.0001513 </td>
+   <td style="text-align:right;"> -0.0001505 </td>
+   <td style="text-align:right;"> -0.0001497 </td>
+   <td style="text-align:right;"> -0.0001490 </td>
+   <td style="text-align:right;"> -0.0001482 </td>
+   <td style="text-align:right;"> -0.0001474 </td>
+   <td style="text-align:right;"> -0.0001466 </td>
+   <td style="text-align:right;"> -0.0001458 </td>
+   <td style="text-align:right;"> -0.0001450 </td>
+   <td style="text-align:right;"> -0.0001442 </td>
+   <td style="text-align:right;"> -0.0001435 </td>
+   <td style="text-align:right;"> -0.0001427 </td>
    <td style="text-align:right;"> -0.0001419 </td>
    <td style="text-align:right;"> -0.0001411 </td>
-   <td style="text-align:right;"> -0.0001404 </td>
-   <td style="text-align:right;"> -0.0001397 </td>
-   <td style="text-align:right;"> -0.0001389 </td>
-   <td style="text-align:right;"> -0.0001382 </td>
-   <td style="text-align:right;"> -0.0001374 </td>
-   <td style="text-align:right;"> -0.0001367 </td>
+   <td style="text-align:right;"> -0.0001403 </td>
+   <td style="text-align:right;"> -0.0001395 </td>
+   <td style="text-align:right;"> -0.0001387 </td>
+   <td style="text-align:right;"> -0.0001380 </td>
+   <td style="text-align:right;"> -0.0001372 </td>
+   <td style="text-align:right;"> -0.0001364 </td>
+   <td style="text-align:right;"> -0.0001356 </td>
+   <td style="text-align:right;"> -0.0001348 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
@@ -4547,50 +5064,50 @@ knitr::kable(head(prof$NIWO))
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
@@ -4780,7 +5297,7 @@ to a single NEON HDF5 file:
 
 
 ```r
-vars <- getVarsEddy("./data/filesToStack00200/NEON.D01.HARV.DP4.00200.001.nsae.2018-07.basic.h5")
+vars <- getVarsEddy("./data/filesToStack00200/NEON.D01.HARV.DP4.00200.001.nsae.2018-06.basic.20211220T155630Z.h5")
 knitr::kable(head(vars))
 ```
 
@@ -4795,6 +5312,7 @@ knitr::kable(head(vars))
    <th style="text-align:left;"> hor </th>
    <th style="text-align:left;"> ver </th>
    <th style="text-align:left;"> tmi </th>
+   <th style="text-align:left;"> subsys </th>
    <th style="text-align:left;"> name </th>
    <th style="text-align:left;"> otype </th>
    <th style="text-align:left;"> dclass </th>
@@ -4812,10 +5330,11 @@ knitr::kable(head(vars))
    <td style="text-align:left;"> 000 </td>
    <td style="text-align:left;"> 060 </td>
    <td style="text-align:left;"> 01m </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> angNedXaxs </td>
    <td style="text-align:left;"> H5I_DATASET </td>
    <td style="text-align:left;"> COMPOUND </td>
-   <td style="text-align:left;"> 44640 </td>
+   <td style="text-align:left;"> 43200 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -4827,10 +5346,11 @@ knitr::kable(head(vars))
    <td style="text-align:left;"> 000 </td>
    <td style="text-align:left;"> 060 </td>
    <td style="text-align:left;"> 01m </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> angNedYaxs </td>
    <td style="text-align:left;"> H5I_DATASET </td>
    <td style="text-align:left;"> COMPOUND </td>
-   <td style="text-align:left;"> 44640 </td>
+   <td style="text-align:left;"> 43200 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -4842,10 +5362,11 @@ knitr::kable(head(vars))
    <td style="text-align:left;"> 000 </td>
    <td style="text-align:left;"> 060 </td>
    <td style="text-align:left;"> 01m </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> angNedZaxs </td>
    <td style="text-align:left;"> H5I_DATASET </td>
    <td style="text-align:left;"> COMPOUND </td>
-   <td style="text-align:left;"> 44640 </td>
+   <td style="text-align:left;"> 43200 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -4857,10 +5378,11 @@ knitr::kable(head(vars))
    <td style="text-align:left;"> 000 </td>
    <td style="text-align:left;"> 060 </td>
    <td style="text-align:left;"> 30m </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> angNedXaxs </td>
    <td style="text-align:left;"> H5I_DATASET </td>
    <td style="text-align:left;"> COMPOUND </td>
-   <td style="text-align:left;"> 1488 </td>
+   <td style="text-align:left;"> 1440 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -4872,10 +5394,11 @@ knitr::kable(head(vars))
    <td style="text-align:left;"> 000 </td>
    <td style="text-align:left;"> 060 </td>
    <td style="text-align:left;"> 30m </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> angNedYaxs </td>
    <td style="text-align:left;"> H5I_DATASET </td>
    <td style="text-align:left;"> COMPOUND </td>
-   <td style="text-align:left;"> 1488 </td>
+   <td style="text-align:left;"> 1440 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -4887,10 +5410,11 @@ knitr::kable(head(vars))
    <td style="text-align:left;"> 000 </td>
    <td style="text-align:left;"> 060 </td>
    <td style="text-align:left;"> 30m </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> angNedZaxs </td>
    <td style="text-align:left;"> H5I_DATASET </td>
    <td style="text-align:left;"> COMPOUND </td>
-   <td style="text-align:left;"> 1488 </td>
+   <td style="text-align:left;"> 1440 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
 </tbody>
@@ -4964,10 +5488,6 @@ the profiles.
 
 ```r
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.6.2
 ```
 
 

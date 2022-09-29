@@ -5,8 +5,8 @@ bookdown::gitbook:
       before: |
         <li><a href="./">INF550: EcoInformatics data collection tools & products, </a></li>
       after: |
-        <li><a href="https://github.com/katharynduffy/katharynduffy.github.io" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/katharynduffy/katharynduffy.github.io/edit/master/%s
+        <li><a href="https://github.com/rdboone/katharynduffy.github.io" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/rdboone/katharynduffy.github.io/edit/master/%s
     download: ["pdf", "epub"]
     search: yes
     fontsettings:
